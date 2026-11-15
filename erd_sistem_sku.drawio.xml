@@ -1,0 +1,626 @@
+<mxfile host="app.diagrams.net" modified="2026-11-03T08:33:00.000Z" agent="Mozilla/5.0" version="24.7.17" type="device">
+  <diagram id="erd-fisik-sku" name="1. ERD Tabel Database (5 Entitas)">
+    <mxGraphModel dx="1650" dy="950" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1150" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ========================================================= -->
+        <!-- 1. ENTITAS: USERS (TOP CENTER)                            -->
+        <!-- ========================================================= -->
+        <mxCell id="ent_users" value="Users" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="840" y="160" width="120" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- Atribut Users -->
+        <mxCell id="attr_user_nik" value="NIK" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="520" y="85" width="110" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="attr_user_id" value="Id_User" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="645" y="45" width="110" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="attr_user_nama" value="Nama_Lengkap" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="770" y="25" width="125" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="attr_user_email" value="Email" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="910" y="25" width="110" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="attr_user_pass" value="Password_Hash" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1035" y="45" width="125" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="attr_user_role" value="Role" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1175" y="85" width="110" height="36" as="geometry" />
+        </mxCell>
+
+        <!-- Garis Atribut Users -->
+        <mxCell id="line_user_nik" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="ent_users" target="attr_user_nik">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="line_user_id" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="ent_users" target="attr_user_id">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="line_user_nama" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="ent_users" target="attr_user_nama">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="line_user_email" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="ent_users" target="attr_user_email">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="line_user_pass" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="ent_users" target="attr_user_pass">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="line_user_role" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="ent_users" target="attr_user_role">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+
+        <!-- ========================================================= -->
+        <!-- 2. RELASI DARI USERS KE ENTITAS BAWAH                     -->
+        <!-- ========================================================= -->
+
+        <!-- Relasi 1: Users -> Mengelola -> Pengaturan Kalurahan -->
+        <mxCell id="rel_mengelola" value="Mengelola" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="272.5" y="300" width="95" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_users_mengelola" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;strokeColor=#000000;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="ent_users" target="rel_mengelola">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="card_users_mengelola" value="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="815" y="162" width="25" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- Relasi 2: Users -> Mengajukan -> Permohonan SKU -->
+        <mxCell id="rel_mengajukan" value="Mengajukan" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="852.5" y="300" width="95" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_users_mengajukan" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;strokeColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="ent_users" target="rel_mengajukan">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="card_users_mengajukan" value="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="875" y="218" width="25" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- Relasi 3: Users -> Mencatat -> Riwayat Status -->
+        <mxCell id="rel_mencatat" value="Mencatat" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1432.5" y="300" width="95" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_users_mencatat" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;strokeColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="ent_users" target="rel_mencatat">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="card_users_mencatat" value="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="962" y="162" width="25" height="25" as="geometry" />
+        </mxCell>
+
+
+        <!-- ========================================================= -->
+        <!-- 3. ENTITAS: PENGATURAN KALURAHAN (LEFT)                   -->
+        <!-- ========================================================= -->
+        <mxCell id="ent_pengaturan" value="Pengaturan Kalurahan" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="470" width="140" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_mengelola_pengaturan" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;strokeColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="rel_mengelola" target="ent_pengaturan">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="card_pengaturan_top" value="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="322" y="442" width="25" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- Atribut Pengaturan Kalurahan -->
+        <mxCell id="attr_peng_id" value="Id_Pengaturan" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="75" y="565" width="120" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="attr_peng_nama" value="Nama_Kalurahan" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="120" y="625" width="130" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="attr_peng_lurah" value="Nama_Lurah" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="260" y="645" width="120" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="attr_peng_nip" value="NIP_Lurah" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="390" y="625" width="115" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="attr_peng_format" value="Format_Nomor_Surat" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="420" y="565" width="135" height="36" as="geometry" />
+        </mxCell>
+
+        <!-- Garis Atribut Pengaturan Kalurahan -->
+        <mxCell id="line_peng_id" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="ent_pengaturan" target="attr_peng_id">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="line_peng_nama" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="ent_pengaturan" target="attr_peng_nama">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="line_peng_lurah" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="ent_pengaturan" target="attr_peng_lurah">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="line_peng_nip" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="ent_pengaturan" target="attr_peng_nip">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="line_peng_format" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="ent_pengaturan" target="attr_peng_format">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+
+        <!-- ========================================================= -->
+        <!-- 4. ENTITAS: PERMOHONAN SKU (CENTER)                       -->
+        <!-- ========================================================= -->
+        <mxCell id="ent_permohonan" value="Permohonan SKU" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="830" y="470" width="140" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_mengajukan_permohonan" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;strokeColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="rel_mengajukan" target="ent_permohonan">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="card_permohonan_top" value="N" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="875" y="442" width="25" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- Atribut Permohonan SKU -->
+        <mxCell id="attr_perm_id" value="Id_Permohonan" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="665" y="565" width="120" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="attr_perm_kode" value="Kode_Pengajuan" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="695" y="625" width="125" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="attr_perm_userid" value="Id_User" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="775" y="675" width="110" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="attr_perm_usaha" value="Nama_Usaha" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="905" y="675" width="115" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="attr_perm_nosurat" value="Nomor_Surat" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="985" y="625" width="120" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="attr_perm_status" value="Status" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="565" width="110" height="36" as="geometry" />
+        </mxCell>
+
+        <!-- Garis Atribut Permohonan SKU -->
+        <mxCell id="line_perm_id" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="ent_permohonan" target="attr_perm_id">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="line_perm_kode" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="ent_permohonan" target="attr_perm_kode">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="line_perm_userid" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="ent_permohonan" target="attr_perm_userid">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="line_perm_usaha" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="ent_permohonan" target="attr_perm_usaha">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="line_perm_nosurat" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="ent_permohonan" target="attr_perm_nosurat">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="line_perm_status" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="ent_permohonan" target="attr_perm_status">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+
+        <!-- ========================================================= -->
+        <!-- 5. ENTITAS: RIWAYAT STATUS (RIGHT)                        -->
+        <!-- ========================================================= -->
+        <mxCell id="ent_riwayat" value="Riwayat Status" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="470" width="140" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_mencatat_riwayat" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;strokeColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="rel_mencatat" target="ent_riwayat">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="card_riwayat_top" value="N" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1482" y="442" width="25" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- Relasi Horizontal: Permohonan SKU -> Menghasilkan -> Riwayat Status -->
+        <mxCell id="rel_menghasilkan" value="Menghasilkan" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1142.5" y="452.5" width="95" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_perm_menghasilkan" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;strokeColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="ent_permohonan" target="rel_menghasilkan">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_menghasilkan_riwayat" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;strokeColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="rel_menghasilkan" target="ent_riwayat">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="card_perm_right" value="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="973" y="472" width="25" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="card_riwayat_left" value="N" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1382" y="472" width="25" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- Atribut Riwayat Status -->
+        <mxCell id="attr_riw_id" value="Id_Riwayat" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1255" y="565" width="115" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="attr_riw_permid" value="Id_Permohonan" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1305" y="625" width="120" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="attr_riw_userid" value="Id_User" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1425" y="645" width="110" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="attr_riw_status" value="Status_Baru" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1545" y="625" width="115" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="attr_riw_ket" value="Keterangan" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1595" y="565" width="115" height="36" as="geometry" />
+        </mxCell>
+
+        <!-- Garis Atribut Riwayat Status -->
+        <mxCell id="line_riw_id" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="ent_riwayat" target="attr_riw_id">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="line_riw_permid" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="ent_riwayat" target="attr_riw_permid">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="line_riw_userid" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="ent_riwayat" target="attr_riw_userid">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="line_riw_status" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="ent_riwayat" target="attr_riw_status">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="line_riw_ket" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="ent_riwayat" target="attr_riw_ket">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+
+        <!-- ========================================================= -->
+        <!-- 6. ENTITAS: DOKUMEN PERSYARATAN (BOTTOM)                  -->
+        <!-- ========================================================= -->
+        <mxCell id="rel_memiliki" value="Memiliki" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="552.5" y="720" width="95" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_perm_memiliki" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;strokeColor=#000000;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="ent_permohonan" target="rel_memiliki">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="card_perm_left" value="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="803" y="472" width="25" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ent_dokumen" value="Dokumen Persyaratan" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="530" y="870" width="140" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_memiliki_dokumen" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;strokeColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="rel_memiliki" target="ent_dokumen">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="card_dokumen_top" value="N" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="602" y="842" width="25" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- Atribut Dokumen Persyaratan -->
+        <mxCell id="attr_dok_id" value="Id_Dokumen" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="355" y="965" width="115" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="attr_dok_permid" value="Id_Permohonan" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="405" y="1025" width="120" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="attr_dok_jenis" value="Jenis_Dokumen" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="540" y="1045" width="120" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="attr_dok_nama" value="Nama_File" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="675" y="1025" width="115" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="attr_dok_verif" value="Status_Verifikasi" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="725" y="965" width="125" height="36" as="geometry" />
+        </mxCell>
+
+        <!-- Garis Atribut Dokumen Persyaratan -->
+        <mxCell id="line_dok_id" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="ent_dokumen" target="attr_dok_id">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="line_dok_permid" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="ent_dokumen" target="attr_dok_permid">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="line_dok_jenis" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="ent_dokumen" target="attr_dok_jenis">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="line_dok_nama" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="ent_dokumen" target="attr_dok_nama">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="line_dok_verif" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="ent_dokumen" target="attr_dok_verif">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="erd-konseptual-sku" name="2. ERD Konseptual Lengkap (Gaya Skripsi)">
+    <mxGraphModel dx="2000" dy="1100" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1150" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ========================================================= -->
+        <!-- 1. ENTITAS PUNCAK: USER                                   -->
+        <!-- ========================================================= -->
+        <mxCell id="c_user" value="User" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="170" width="110" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="c_user_a1" value="Nama_Lengkap" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="910" y="75" width="120" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c_user_a2" value="Id_User" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1035" y="35" width="120" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c_user_a3" value="Email" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1160" y="75" width="120" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c_user_l1" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="c_user" target="c_user_a1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_user_l2" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="c_user" target="c_user_a2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_user_l3" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="c_user" target="c_user_a3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ========================================================= -->
+        <!-- 2. CABANG KIRI ATAS: LOGIN (Melakukan)                    -->
+        <!-- ========================================================= -->
+        <mxCell id="c_rel_login" value="Melakukan" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="380" y="275" width="90" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="c_ent_login" value="Login" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="190" y="380" width="100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="c_edge_u_login" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;strokeColor=#000000;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="c_user" target="c_rel_login">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_edge_r_login" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;strokeColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="c_rel_login" target="c_ent_login">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_card_ul1" value="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+          <mxGeometry x="1015" y="172" width="25" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="c_card_ul2" value="N" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+          <mxGeometry x="292" y="410" width="25" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- Atribut Login -->
+        <mxCell id="c_log_a1" value="Password" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="80" y="295" width="110" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c_log_a2" value="NIK / Email" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="125" y="245" width="110" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c_log_a3" value="Role" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="250" y="245" width="110" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c_log_a4" value="Id_User" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="285" y="295" width="110" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c_log_l1" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="c_ent_login" target="c_log_a1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_log_l2" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="c_ent_login" target="c_log_a2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_log_l3" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="c_ent_login" target="c_log_a3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_log_l4" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="c_ent_login" target="c_log_a4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ========================================================= -->
+        <!-- 3. CABANG 1: PERMOHONAN SKU + DOKUMEN + SURAT SKU          -->
+        <!-- ========================================================= -->
+        <mxCell id="c_rel_ajukan" value="Mengajukan" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="555" y="295" width="90" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="c_ent_perm" value="Permohonan SKU" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="540" y="450" width="120" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="c_edge_u_perm" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;strokeColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="c_user" target="c_rel_ajukan">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_edge_r_perm" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;strokeColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="c_rel_ajukan" target="c_ent_perm">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_card_up1" value="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+          <mxGeometry x="1070" y="225" width="25" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="c_card_up2" value="N" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="423" width="25" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- Atribut Permohonan SKU -->
+        <mxCell id="c_perm_a1" value="Nama_Pemohon" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="425" y="535" width="115" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c_perm_a2" value="Nama_Usaha" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="455" y="585" width="115" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c_perm_a3" value="Id_Permohonan" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="540" y="630" width="120" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c_perm_a4" value="Bidang_Usaha" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="630" y="585" width="115" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c_perm_a5" value="Id_User" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="660" y="535" width="115" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c_perm_l1" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="c_ent_perm" target="c_perm_a1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_perm_l2" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="c_ent_perm" target="c_perm_a2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_perm_l3" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="c_ent_perm" target="c_perm_a3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_perm_l4" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="c_ent_perm" target="c_perm_a4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_perm_l5" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="c_ent_perm" target="c_perm_a5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Sub-cabang Kiri Bawah: Dokumen Persyaratan & Validasi Berkas -->
+        <mxCell id="c_rel_lampir" value="Melampirkan" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="335" y="560" width="90" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="c_ent_dok" value="Dokumen Persyaratan" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="320" y="745" width="120" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="c_edge_p_dok" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;strokeColor=#000000;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="c_ent_perm" target="c_rel_lampir">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_edge_r_dok" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;strokeColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="c_rel_lampir" target="c_ent_dok">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_card_pd1" value="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+          <mxGeometry x="512" y="480" width="25" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="c_card_pd2" value="N" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+          <mxGeometry x="380" y="718" width="25" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="c_dok_a1" value="Id_Dokumen" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="255" y="845" width="115" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c_dok_a2" value="Jenis_Dokumen" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="385" y="845" width="120" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c_dok_l1" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="c_ent_dok" target="c_dok_a1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_dok_l2" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="c_ent_dok" target="c_dok_a2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Sub-cabang Kanan Bawah dari Permohonan: Menghasilkan -> Surat SKU -->
+        <mxCell id="c_rel_surat" value="Menghasilkan" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="765" y="432.5" width="90" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="c_ent_surat" value="Surat SKU" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="720" y="800" width="110" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="c_edge_p_surat" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;strokeColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="c_ent_perm" target="c_rel_surat">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_edge_r_surat" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;strokeColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="c_rel_surat" target="c_ent_surat">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_card_ps1" value="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+          <mxGeometry x="662" y="452" width="25" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="c_card_ps2" value="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+          <mxGeometry x="832" y="802" width="25" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="c_sur_a1" value="Id_Permohonan" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="625" y="905" width="120" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c_sur_a2" value="Nomor_Surat" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="715" y="950" width="120" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c_sur_a3" value="QR_Token" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="805" y="905" width="115" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c_sur_l1" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="c_ent_surat" target="c_sur_a1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_sur_l2" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="c_ent_surat" target="c_sur_a2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_sur_l3" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="c_ent_surat" target="c_sur_a3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ========================================================= -->
+        <!-- 4. CABANG TENGAH: RIWAYAT STATUS                          -->
+        <!-- ========================================================= -->
+        <mxCell id="c_rel_catat" value="Mencatat" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="295" width="90" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="c_ent_riwayat" value="Riwayat Status" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1135" y="450" width="120" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="c_edge_u_riw" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;strokeColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="c_user" target="c_rel_catat">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_edge_r_riw" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;strokeColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="c_rel_catat" target="c_ent_riwayat">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_card_ur2" value="N" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+          <mxGeometry x="1195" y="423" width="25" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="c_riw_a1" value="Id_User" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="535" width="110" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c_riw_a2" value="Status_Baru" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="585" width="115" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c_riw_a3" value="Id_Riwayat" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1135" y="630" width="120" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c_riw_a4" value="Keterangan" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1220" y="585" width="115" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c_riw_a5" value="Id_Permohonan" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1250" y="535" width="120" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c_riw_l1" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="c_ent_riwayat" target="c_riw_a1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_riw_l2" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="c_ent_riwayat" target="c_riw_a2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_riw_l3" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="c_ent_riwayat" target="c_riw_a3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_riw_l4" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="c_ent_riwayat" target="c_riw_a4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_riw_l5" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="c_ent_riwayat" target="c_riw_a5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ========================================================= -->
+        <!-- 5. CABANG KANAN: PENGATURAN KALURAHAN                     -->
+        <!-- ========================================================= -->
+        <mxCell id="c_rel_kelola" value="Mengelola" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1635" y="295" width="90" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="c_ent_peng" value="Pengaturan Kalurahan" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1615" y="450" width="130" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="c_edge_u_peng" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;strokeColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="c_user" target="c_rel_kelola">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_edge_r_peng" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;strokeColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="c_rel_kelola" target="c_ent_peng">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_card_uk1" value="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+          <mxGeometry x="1152" y="172" width="25" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="c_card_uk2" value="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+          <mxGeometry x="1680" y="423" width="25" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="c_peng_a1" value="Nama_Kalurahan" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1505" y="545" width="125" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c_peng_a2" value="Id_Pengaturan" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1560" y="600" width="120" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c_peng_a3" value="Nama_Lurah" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1690" y="600" width="115" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c_peng_a4" value="Format_Nomor_Surat" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1740" y="545" width="135" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c_peng_l1" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="c_ent_peng" target="c_peng_a1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_peng_l2" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="c_ent_peng" target="c_peng_a2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_peng_l3" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="c_ent_peng" target="c_peng_a3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_peng_l4" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;" edge="1" parent="1" source="c_ent_peng" target="c_peng_a4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

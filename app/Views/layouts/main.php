@@ -404,25 +404,44 @@
 <body>
 
     <!-- Top Navigation -->
+    <?php
+    $navRoleKey = strtolower((string) (session()->get('role') ?? ''));
+    $navRoleMap = [
+        'admin'   => 'Admin',
+        'pemohon' => 'Pemohon',
+        'staf'    => 'Staff',
+        'lurah'   => 'Lurah',
+    ];
+    $navRoleText = $navRoleMap[$navRoleKey] ?? ucfirst($navRoleKey ?: 'User');
+    ?>
     <header class="navbar">
-        <a href="<?= base_url() ?>" class="navbar-brand" id="nav-brand">
-            <div class="brand-logo-wrapper">
-                <img src="<?= base_url('images/logo-kalurahan.svg') ?>" alt="Logo Kalurahan" class="brand-logo-img">
-            </div>
-            <div class="brand-text">
-                <h1>Sistem SKU</h1>
-                <span>Kalurahan <?= esc($pengaturan['nama_kalurahan'] ?? 'Condongcatur') ?></span>
-            </div>
-        </a>
+        <div style="display:flex;align-items:center;gap:0.85rem;">
+            <a href="<?= base_url() ?>" class="navbar-brand" id="nav-brand">
+                <div class="brand-logo-wrapper">
+                    <img src="<?= base_url('images/logo-kalurahan.svg') ?>" alt="Logo Kalurahan" class="brand-logo-img">
+                </div>
+                <div class="brand-text">
+                    <h1>Sistem SKU</h1>
+                    <span>Kalurahan <?= esc($pengaturan['nama_kalurahan'] ?? 'Condongcatur') ?></span>
+                </div>
+            </a>
+
+            <?php if (session()->get('isLoggedIn')): ?>
+                <span id="nav-role-label" style="font-size:0.85rem;font-weight:700;color:#0f172a;"><?= esc($navRoleText) ?></span>
+            <?php endif; ?>
+        </div>
 
         <div class="nav-right">
             <?php if (session()->get('isLoggedIn')): ?>
+                <?php
+                $cleanNavNama = preg_replace('/\s*\((?:Lurah|Staf(?:\s+Pelayanan)?|Staff|Admin(?:istrator)?|Warga(?:\s*\/\s*Pemohon)?|Pemohon)\)\s*$/i', '', (string) (session()->get('namaLengkap') ?? 'Pengguna'));
+                ?>
                 <div class="user-badge" id="nav-user-badge">
                     <div class="user-avatar">
-                        <?= strtoupper(substr(session()->get('namaLengkap') ?? 'U', 0, 1)) ?>
+                        <?= strtoupper(substr($cleanNavNama, 0, 1)) ?>
                     </div>
                     <div class="user-info">
-                        <span class="user-name"><?= esc(session()->get('namaLengkap')) ?></span>
+                        <span class="user-name"><?= esc($cleanNavNama) ?></span>
                         <span class="user-role-badge"><i class="fa-solid fa-shield-halved"></i> <?= esc(session()->get('role')) ?></span>
                     </div>
                 </div>

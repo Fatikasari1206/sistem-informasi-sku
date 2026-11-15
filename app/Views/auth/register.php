@@ -1,122 +1,351 @@
-<?= $this->extend('layouts/main') ?>
+<?= $this->extend('layouts/auth') ?>
 
-<?= $this->section('content') ?>
-<div style="max-width: 640px; margin: 1.5rem auto;">
-    <div class="card" style="padding: 2.25rem; box-shadow: var(--shadow-lg); border-radius: var(--radius-lg);">
-        <div style="text-align: center; margin-bottom: 2rem;">
-            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--success) 0%, #059669 100%); color: white; border-radius: 16px; display: inline-flex; align-items: center; justify-content: center; font-size: 1.75rem; margin-bottom: 1rem; box-shadow: 0 6px 16px rgba(16,185,129,0.3);">
-                <i class="fa-solid fa-user-plus"></i>
-            </div>
-            <h2 style="font-size: 1.6rem; font-weight: 800; color: var(--secondary); letter-spacing: -0.02em;">Pendaftaran Akun Warga</h2>
-            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.35rem;">Daftar untuk mengajukan Surat Keterangan Usaha (SKU) Baru & Perpanjangan</p>
-        </div>
+<?php
+$this->setVar('cardMaxWidth', '610px');
+$this->setVar('cardPadding', '1.45rem 2rem 1.55rem');
+?>
 
-        <?php if (session()->getFlashdata('errors')): ?>
-            <div class="alert alert-error" style="margin-bottom: 1.5rem;">
-                <i class="fa-solid fa-triangle-exclamation"></i>
-                <div style="font-size: 0.85rem;">
-                    <strong>Perhatian:</strong>
-                    <ul style="margin-left: 1rem; margin-top: 0.25rem;">
-                        <?php foreach (session()->getFlashdata('errors') as $err): ?>
-                            <li><?= esc($err) ?></li>
-                        <?php endforeach; ?>
-                    </ul>
-                </div>
-            </div>
-        <?php endif; ?>
+<?= $this->section('styles') ?>
+<style>
+    .nik-search-row {
+        display: flex;
+        gap: 0.65rem;
+        align-items: stretch;
+    }
 
-        <form action="<?= base_url('register') ?>" method="POST" id="form-register">
-            <?= csrf_field() ?>
+    .nik-search-input {
+        flex: 1;
+        border: 1.5px solid #2dd4bf;
+    }
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem;">
-                <div>
-                    <label for="input-nik" style="display: block; font-size: 0.85rem; font-weight: 600; color: var(--secondary); margin-bottom: 0.4rem;">
-                        NIK KTP (16 Digit) <span style="color: var(--danger);">*</span>
-                    </label>
-                    <input type="text" name="nik" id="input-nik" maxlength="16" value="<?= old('nik') ?>" required placeholder="Contoh: 340401..." 
-                        style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border); border-radius: var(--radius-sm); font-size: 0.92rem; outline: none;">
-                </div>
+    .nik-search-input:focus {
+        border-color: #14b8a6;
+        box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.25);
+    }
 
-                <div>
-                    <label for="input-nama" style="display: block; font-size: 0.85rem; font-weight: 600; color: var(--secondary); margin-bottom: 0.4rem;">
-                        Nama Lengkap (Sesuai KTP) <span style="color: var(--danger);">*</span>
-                    </label>
-                    <input type="text" name="nama_lengkap" id="input-nama" value="<?= old('nama_lengkap') ?>" required placeholder="Nama lengkap Anda" 
-                        style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border); border-radius: var(--radius-sm); font-size: 0.92rem; outline: none;">
-                </div>
-            </div>
+    .btn-cek-nik {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.45rem;
+        height: 40px;
+        padding: 0 1rem;
+        background: #e2f8ed;
+        color: #0f172a;
+        border: 1.5px solid #a7f3d0;
+        border-radius: 9px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        white-space: nowrap;
+        cursor: pointer;
+        transition: background 0.2s ease, transform 0.15s ease;
+    }
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem;">
-                <div>
-                    <label for="input-email" style="display: block; font-size: 0.85rem; font-weight: 600; color: var(--secondary); margin-bottom: 0.4rem;">
-                        Alamat Email <span style="color: var(--danger);">*</span>
-                    </label>
-                    <input type="email" name="email" id="input-email" value="<?= old('email') ?>" required placeholder="nama@email.com" 
-                        style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border); border-radius: var(--radius-sm); font-size: 0.92rem; outline: none;">
-                </div>
+    .btn-cek-nik:hover:not(:disabled) {
+        background: #ccf4df;
+        transform: translateY(-1px);
+    }
 
-                <div>
-                    <label for="input-nohp" style="display: block; font-size: 0.85rem; font-weight: 600; color: var(--secondary); margin-bottom: 0.4rem;">
-                        Nomor HP / WhatsApp <span style="color: var(--danger);">*</span>
-                    </label>
-                    <input type="tel" name="no_hp" id="input-nohp" value="<?= old('no_hp') ?>" required placeholder="Contoh: 08123456789" 
-                        style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border); border-radius: var(--radius-sm); font-size: 0.92rem; outline: none;">
-                </div>
-            </div>
+    .btn-cek-nik:disabled {
+        opacity: 0.75;
+        cursor: wait;
+    }
 
-            <div style="margin-bottom: 1.25rem;">
-                <label for="input-alamat" style="display: block; font-size: 0.85rem; font-weight: 600; color: var(--secondary); margin-bottom: 0.4rem;">
-                    Alamat Domisili / KTP <span style="color: var(--danger);">*</span>
-                </label>
-                <textarea name="alamat" id="input-alamat" rows="2" required placeholder="Nama jalan, nomor rumah, padukuhan / dusun" 
-                    style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border); border-radius: var(--radius-sm); font-size: 0.92rem; outline: none; resize: vertical;"><?= old('alamat') ?></textarea>
-            </div>
+    .nik-status {
+        margin-top: 0.35rem;
+        font-size: 0.74rem;
+        line-height: 1.35;
+        display: none;
+    }
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem;">
-                <div>
-                    <label for="input-rt" style="display: block; font-size: 0.85rem; font-weight: 600; color: var(--secondary); margin-bottom: 0.4rem;">
-                        RT
-                    </label>
-                    <input type="text" name="rt" id="input-rt" maxlength="5" value="<?= old('rt') ?>" placeholder="01" 
-                        style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border); border-radius: var(--radius-sm); font-size: 0.92rem; outline: none;">
-                </div>
+    .nik-status.is-success {
+        display: block;
+        color: #6ee7b7;
+    }
 
-                <div>
-                    <label for="input-rw" style="display: block; font-size: 0.85rem; font-weight: 600; color: var(--secondary); margin-bottom: 0.4rem;">
-                        RW
-                    </label>
-                    <input type="text" name="rw" id="input-rw" maxlength="5" value="<?= old('rw') ?>" placeholder="02" 
-                        style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border); border-radius: var(--radius-sm); font-size: 0.92rem; outline: none;">
-                </div>
-            </div>
+    .nik-status.is-error {
+        display: block;
+        color: #fca5a5;
+    }
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.75rem;">
-                <div>
-                    <label for="input-password" style="display: block; font-size: 0.85rem; font-weight: 600; color: var(--secondary); margin-bottom: 0.4rem;">
-                        Kata Sandi (Min. 6 Karakter) <span style="color: var(--danger);">*</span>
-                    </label>
-                    <input type="password" name="password" id="input-password" required placeholder="••••••••" 
-                        style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border); border-radius: var(--radius-sm); font-size: 0.92rem; outline: none;">
-                </div>
+    .form-grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 1rem;
+    }
 
-                <div>
-                    <label for="input-confirm" style="display: block; font-size: 0.85rem; font-weight: 600; color: var(--secondary); margin-bottom: 0.4rem;">
-                        Konfirmasi Kata Sandi <span style="color: var(--danger);">*</span>
-                    </label>
-                    <input type="password" name="password_confirm" id="input-confirm" required placeholder="••••••••" 
-                        style="width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border); border-radius: var(--radius-sm); font-size: 0.92rem; outline: none;">
-                </div>
-            </div>
+    .consent-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.55rem;
+        margin: 0.15rem 0 1rem;
+        font-size: 0.74rem;
+        color: #d1d5db;
+        line-height: 1.4;
+        cursor: pointer;
+    }
 
-            <button type="submit" class="btn btn-primary" id="btn-submit-register" style="width: 100%; justify-content: center; padding: 0.85rem; font-size: 1rem; border-radius: var(--radius-md);">
-                <i class="fa-solid fa-check"></i> Selesaikan Pendaftaran
-            </button>
-        </form>
+    .consent-row input[type="checkbox"] {
+        width: 15px;
+        height: 15px;
+        margin-top: 1px;
+        accent-color: #5246f0;
+        cursor: pointer;
+        flex-shrink: 0;
+    }
 
-        <div style="margin-top: 1.5rem; text-align: center; font-size: 0.88rem; color: var(--text-muted);">
-            Sudah memiliki akun? 
-            <a href="<?= base_url('login') ?>" style="color: var(--primary); font-weight: 700; text-decoration: none;">Masuk ke Akun Anda</a>
-        </div>
+    @media (max-width: 680px) {
+        .nik-search-row {
+            flex-direction: column;
+        }
+
+        .form-grid-2 {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+<?= $this->endSection() ?>
+
+<?= $this->section('card') ?>
+    <div class="card-header">
+        <h2 id="auth-heading">Registrasi Akun Pemohon</h2>
+        <p>Khusus warga ber-KTP Condongcatur. Data KTP akan terisi otomatis.</p>
     </div>
-</div>
+
+    <?php if (session()->getFlashdata('error')): ?>
+        <div class="alert alert-error" id="flash-error">
+            <?= esc(session()->getFlashdata('error')) ?>
+        </div>
+    <?php endif; ?>
+
+    <?php if (session()->getFlashdata('errors')): ?>
+        <div class="alert alert-error" id="flash-errors">
+            <ul>
+                <?php foreach (session()->getFlashdata('errors') as $err): ?>
+                    <li><?= esc($err) ?></li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    <?php endif; ?>
+
+    <form action="<?= base_url('register') ?>" method="POST" id="form-register" autocomplete="off">
+        <?= csrf_field() ?>
+
+        <div class="form-group">
+            <div class="label-row">
+                <label for="nik" class="form-label">Nomor Induk Kependudukan (NIK)</label>
+            </div>
+            <div class="nik-search-row">
+                <input
+                    type="text"
+                    name="nik"
+                    id="nik"
+                    class="form-control nik-search-input"
+                    inputmode="numeric"
+                    maxlength="16"
+                    pattern="[0-9]{16}"
+                    autocomplete="off"
+                    value="<?= esc(old('nik')) ?>"
+                    placeholder="Ketik 16 angka NIK KTP Anda"
+                    required
+                    autofocus
+                >
+                <button type="button" class="btn-cek-nik" id="btn-cek-nik">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect x="3" y="4" width="18" height="16" rx="2"></rect>
+                        <circle cx="9" cy="10" r="2"></circle>
+                        <path d="M15 8h2"></path>
+                        <path d="M15 12h2"></path>
+                        <path d="M7 16h10"></path>
+                    </svg>
+                    <span>Cek NIK</span>
+                </button>
+            </div>
+            <div id="nik-status" class="nik-status" role="status" aria-live="polite"></div>
+        </div>
+
+        <div class="form-grid-2">
+            <div class="form-group">
+                <div class="label-row">
+                    <label for="nama_lengkap" class="form-label">Nama Lengkap sesuai KTP</label>
+                </div>
+                <input
+                    type="text"
+                    name="nama_lengkap"
+                    id="nama_lengkap"
+                    class="form-control"
+                    autocomplete="name"
+                    value="<?= esc(old('nama_lengkap')) ?>"
+                    placeholder="Otomatis muncul setelah cek NIK"
+                    readonly
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <div class="label-row">
+                    <label for="wilayah_domisili" class="form-label">Padukuhan / RT &amp; RW</label>
+                </div>
+                <input
+                    type="text"
+                    name="wilayah_domisili"
+                    id="wilayah_domisili"
+                    class="form-control"
+                    value="<?= esc(old('wilayah_domisili')) ?>"
+                    placeholder="Otomatis muncul setelah cek NIK"
+                    readonly
+                    required
+                >
+            </div>
+        </div>
+
+        <div class="form-grid-2">
+            <div class="form-group">
+                <div class="label-row">
+                    <label for="no_hp" class="form-label">Nomor WhatsApp Aktif</label>
+                </div>
+                <input
+                    type="tel"
+                    name="no_hp"
+                    id="no_hp"
+                    class="form-control"
+                    autocomplete="tel"
+                    value="<?= esc(old('no_hp')) ?>"
+                    placeholder="Contoh: 081234567890"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <div class="label-row">
+                    <label for="email" class="form-label">Alamat Email</label>
+                </div>
+                <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    class="form-control"
+                    autocomplete="email"
+                    value="<?= esc(old('email')) ?>"
+                    placeholder="Contoh: nama@email.com"
+                    required
+                >
+            </div>
+        </div>
+
+        <div class="form-grid-2">
+            <div class="form-group">
+                <div class="label-row">
+                    <label for="password" class="form-label">Kata Sandi</label>
+                </div>
+                <?= view('auth/_password_input', [
+                    'id'           => 'password',
+                    'name'         => 'password',
+                    'autocomplete' => 'new-password',
+                    'placeholder'  => 'Minimal 6 karakter',
+                    'minlength'    => 6,
+                ]) ?>
+            </div>
+
+            <div class="form-group">
+                <div class="label-row">
+                    <label for="password_confirm" class="form-label">Ulangi Kata Sandi</label>
+                </div>
+                <?= view('auth/_password_input', [
+                    'id'           => 'password_confirm',
+                    'name'         => 'password_confirm',
+                    'autocomplete' => 'new-password',
+                    'placeholder'  => 'Ketik ulang kata sandi di atas',
+                    'minlength'    => 6,
+                ]) ?>
+            </div>
+        </div>
+
+        <label class="consent-row" for="persetujuan">
+            <input type="checkbox" name="persetujuan" id="persetujuan" value="1" <?= old('persetujuan') ? 'checked' : '' ?> required>
+            <span>Saya menyatakan data kependudukan dan NIK di atas benar serta sesuai KTP asli.</span>
+        </label>
+
+        <button type="submit" class="btn-auth" id="btn-submit-register">Daftar Sekarang</button>
+    </form>
+
+    <p class="auth-footer-link">
+        Sudah memiliki akun warga?
+        <a href="<?= base_url('login') ?>">Masuk ke Portal Warga &rarr;</a>
+    </p>
+<?= $this->endSection() ?>
+
+<?= $this->section('scripts') ?>
+<script>
+    (function () {
+        var nikInput = document.getElementById('nik');
+        var namaInput = document.getElementById('nama_lengkap');
+        var wilayahInput = document.getElementById('wilayah_domisili');
+        var btnCek = document.getElementById('btn-cek-nik');
+        var statusEl = document.getElementById('nik-status');
+        var cekNikUrl = '<?= base_url('register/cek-nik') ?>';
+
+        function setStatus(type, text) {
+            statusEl.className = 'nik-status ' + (type === 'success' ? 'is-success' : 'is-error');
+            statusEl.textContent = text;
+        }
+
+        function resetSyncedFields() {
+            namaInput.value = '';
+            wilayahInput.value = '';
+        }
+
+        async function cekNik() {
+            var nik = nikInput.value.trim();
+
+            if (!/^\d{16}$/.test(nik)) {
+                resetSyncedFields();
+                setStatus('error', 'Masukkan 16 digit angka NIK terlebih dahulu.');
+                nikInput.focus();
+                return;
+            }
+
+            btnCek.disabled = true;
+            setStatus('success', 'Memeriksa NIK pada data master Kalurahan Condongcatur...');
+
+            try {
+                var response = await fetch(cekNikUrl + '?nik=' + encodeURIComponent(nik), {
+                    headers: { 'Accept': 'application/json' }
+                });
+                var payload = await response.json();
+
+                if (!response.ok || !payload.success) {
+                    resetSyncedFields();
+                    setStatus('error', payload.message || 'NIK gagal diverifikasi.');
+                    return;
+                }
+
+                namaInput.value = payload.data.nama_lengkap;
+                wilayahInput.value = payload.data.wilayah_padukuhan;
+                setStatus('success', payload.message);
+            } catch (err) {
+                resetSyncedFields();
+                setStatus('error', 'Gagal terhubung ke server untuk memeriksa NIK.');
+            } finally {
+                btnCek.disabled = false;
+            }
+        }
+
+        nikInput.addEventListener('input', function () {
+            this.value = this.value.replace(/\D/g, '').slice(0, 16);
+            resetSyncedFields();
+            statusEl.className = 'nik-status';
+            statusEl.textContent = '';
+        });
+
+        nikInput.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                cekNik();
+            }
+        });
+
+        btnCek.addEventListener('click', cekNik);
+    })();
+</script>
 <?= $this->endSection() ?>

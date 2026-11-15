@@ -1,125 +1,112 @@
-<?= $this->extend('layouts/main') ?>
+<?= $this->extend('layouts/dashboard') ?>
+
+<?php
+$statusMap = [
+    'diajukan'                   => ['label' => 'Menunggu Staf', 'class' => 'status-amber'],
+    'verifikasi_staf'            => ['label' => 'Sedang Diperiksa', 'class' => 'status-indigo'],
+    'revisi'                     => ['label' => 'Perlu Revisi', 'class' => 'status-red'],
+    'menunggu_persetujuan_lurah' => ['label' => 'Menunggu Lurah', 'class' => 'status-indigo'],
+    'disetujui'                  => ['label' => 'Disahkan Lurah', 'class' => 'status-green'],
+    'selesai'                    => ['label' => 'Selesai', 'class' => 'status-green'],
+    'ditolak'                    => ['label' => 'Ditolak', 'class' => 'status-red'],
+];
+?>
+
+<?= $this->section('styles') ?>
+    <?= $this->include('staf/_styles') ?>
+<?= $this->endSection() ?>
+
+<?= $this->section('sidebar_nav') ?>
+    <?= view('staf/_sidebar_nav', ['activeMenu' => 'dashboard']) ?>
+<?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
-<div style="margin-bottom: 2rem;">
-    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-        <div>
-            <h1 style="font-size: 1.75rem; font-weight: 800; color: var(--secondary); letter-spacing: -0.02em;">
-                Dashboard Pelayanan Staf
-            </h1>
-            <p style="color: var(--text-muted); font-size: 0.92rem; margin-top: 0.25rem;">
-                Verifikasi berkas persyaratan permohonan SKU baru dan perpanjangan dari warga.
-            </p>
+    <!-- 3 KPI Cards -->
+    <section class="kpi-grid-3" aria-label="Ringkasan Pengajuan SKU">
+        <div class="kpi-card">
+            <div class="kpi-label">TOTAL PENGAJUAN SKU</div>
+            <div class="kpi-value"><?= (int) $stats['total_sku'] ?> Pengajuan</div>
         </div>
-        <div>
-            <span class="badge" style="background: var(--primary-light); color: var(--primary); font-size: 0.85rem; padding: 0.5rem 1rem;">
-                <i class="fa-solid fa-user-check"></i> Petugas Verifikator: <?= esc(session()->get('namaLengkap')) ?>
-            </span>
+        <div class="kpi-card">
+            <div class="kpi-label">PERLU VERIFIKASI STAF</div>
+            <div class="kpi-value"><?= (int) $stats['perlu_verifikasi'] ?> Berkas</div>
         </div>
-    </div>
-</div>
+        <div class="kpi-card">
+            <div class="kpi-label">SIAP TTE LURAH</div>
+            <div class="kpi-value"><?= (int) $stats['siap_tte'] ?> Berkas</div>
+        </div>
+    </section>
 
-<!-- Stat Grid -->
-<div class="stat-grid">
-    <div class="stat-card">
-        <div class="stat-icon yellow">
-            <i class="fa-solid fa-inbox"></i>
-        </div>
-        <div class="stat-meta">
-            <h3><?= $stats['total_masuk'] ?></h3>
-            <p>Antrean Berkas Masuk</p>
-        </div>
-    </div>
+    <!-- Tabel Informasi Pengajuan SKU -->
+    <section class="panel-card">
+        <div class="panel-head">
+            <h2 class="panel-title">Daftar Pengajuan Surat Keterangan Usaha (SKU)</h2>
 
-    <div class="stat-card">
-        <div class="stat-icon red">
-            <i class="fa-solid fa-triangle-exclamation"></i>
+            <select id="filter-padukuhan" class="filter-select" aria-label="Filter berdasarkan padukuhan">
+                <option value="">Padukuhan</option>
+                <?php foreach ($padukuhanList as $p): ?>
+                    <option value="<?= esc($p) ?>"><?= esc($p) ?></option>
+                <?php endforeach; ?>
+            </select>
         </div>
-        <div class="stat-meta">
-            <h3><?= $stats['perlu_revisi'] ?></h3>
-            <p>Perlu Revisi Pemohon</p>
-        </div>
-    </div>
 
-    <div class="stat-card">
-        <div class="stat-icon purple">
-            <i class="fa-solid fa-paper-plane"></i>
-        </div>
-        <div class="stat-meta">
-            <h3><?= $stats['diteruskan'] ?></h3>
-            <p>Diteruskan ke Lurah</p>
-        </div>
-    </div>
-
-    <div class="stat-card">
-        <div class="stat-icon green">
-            <i class="fa-solid fa-circle-check"></i>
-        </div>
-        <div class="stat-meta">
-            <h3><?= $stats['selesai'] ?></h3>
-            <p>SKU Selesai Terbit</p>
-        </div>
-    </div>
-</div>
-
-<!-- Antrean Masuk -->
-<div class="card">
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
-        <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--secondary); display: flex; align-items: center; gap: 0.5rem;">
-            <i class="fa-solid fa-clock-rotate-left text-primary"></i> Antrean Permohonan Terbaru
-        </h3>
-    </div>
-
-    <?php if (empty($antrean)): ?>
-        <div style="text-align: center; padding: 3rem 1rem; color: var(--text-muted);">
-            <div style="font-size: 2.5rem; color: #cbd5e1; margin-bottom: 0.75rem;"><i class="fa-solid fa-folder-open"></i></div>
-            <p style="font-size: 0.95rem; font-weight: 600;">Belum ada antrean berkas yang menunggu verifikasi.</p>
-            <span style="font-size: 0.82rem;">Semua berkas pengajuan sudah ditindaklanjuti.</span>
-        </div>
-    <?php else: ?>
-        <div class="table-responsive">
-            <table class="table-modern">
-                <thead>
-                    <tr>
-                        <th>Kode</th>
-                        <th>Pemohon</th>
-                        <th>Nama Usaha</th>
-                        <th>Tipe</th>
-                        <th>Status</th>
-                        <th>Tanggal</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($antrean as $row): ?>
+        <?php if (empty($daftarSku)): ?>
+            <div class="empty-state">
+                <strong>Belum ada pengajuan SKU masuk</strong>
+            </div>
+        <?php else: ?>
+            <div class="table-wrap">
+                <table class="staf-table" id="staf-queue-table">
+                    <thead>
                         <tr>
-                            <td><strong><?= esc($row['kode_pengajuan']) ?></strong></td>
-                            <td>
-                                <div><strong><?= esc($row['nama_pemohon']) ?></strong></div>
-                                <span style="font-size: 0.75rem; color: var(--text-muted);">NIK: <?= esc($row['nik_pemohon']) ?></span>
-                            </td>
-                            <td><?= esc($row['nama_usaha']) ?></td>
-                            <td>
-                                <span class="badge" style="background: #f1f5f9; color: var(--text-main);">
-                                    <?= ucfirst(esc($row['tipe_pengajuan'])) ?>
-                                </span>
-                            </td>
-                            <td>
-                                <span class="badge badge-<?= esc($row['status']) ?>">
-                                    <?= str_replace('_', ' ', esc($row['status'])) ?>
-                                </span>
-                            </td>
-                            <td><?= date('d M Y', strtotime($row['created_at'])) ?></td>
-                            <td>
-                                <a href="<?= base_url('staf/verifikasi/' . $row['id']) ?>" class="btn btn-primary btn-sm">
-                                    <i class="fa-solid fa-file-circle-check"></i> Verifikasi
-                                </a>
-                            </td>
+                            <th>NO. REGISTRASI / SKU</th>
+                            <th>PEMOHON &amp; NIK</th>
+                            <th>NAMA USAHA</th>
+                            <th>PADUKUHAN</th>
+                            <th>TANGGAL</th>
+                            <th>STATUS</th>
+                            <th>AKSI</th>
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
-    <?php endif; ?>
-</div>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($daftarSku as $row): ?>
+                            <?php
+                                $statusKey   = $row['status'] ?? 'diajukan';
+                                $statusMeta  = $statusMap[$statusKey] ?? ['label' => 'Diproses', 'class' => 'status-neutral'];
+                                $padukuhan   = !empty($row['padukuhan']) ? $row['padukuhan'] : '-';
+                                $nomorTampil = !empty($row['nomor_surat']) ? $row['nomor_surat'] : $row['kode_pengajuan'];
+                                $needCheck   = in_array($statusKey, ['diajukan', 'verifikasi_staf'], true);
+                            ?>
+                            <tr data-padukuhan="<?= esc($padukuhan) ?>">
+                                <td class="cell-strong"><?= esc($nomorTampil) ?></td>
+                                <td>
+                                    <span class="pemohon-name"><?= esc($row['nama_pemohon']) ?></span>
+                                    <span class="pemohon-nik"><?= esc($row['nik_pemohon']) ?></span>
+                                </td>
+                                <td class="cell-strong"><?= esc($row['nama_usaha']) ?></td>
+                                <td><?= esc($padukuhan) ?></td>
+                                <td><?= date('d M Y H:i', strtotime($row['created_at'])) ?></td>
+                                <td>
+                                    <span class="pill-badge <?= esc($statusMeta['class']) ?>">
+                                        <?= esc($statusMeta['label']) ?>
+                                    </span>
+                                </td>
+                                <td>
+                                    <a href="<?= base_url('staf/periksa/' . (int) $row['id']) ?>" class="action-btn <?= $needCheck ? '' : 'slate' ?>">
+                                        <?= $needCheck ? 'Periksa' : 'Lihat' ?>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="staf-pagination"></div>
+        <?php endif; ?>
+    </section>
+<?= $this->endSection() ?>
+
+<?= $this->section('scripts') ?>
+    <?= $this->include('staf/_table_filter_script') ?>
 <?= $this->endSection() ?>

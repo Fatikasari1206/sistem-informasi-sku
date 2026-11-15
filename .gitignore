@@ -42,6 +42,8 @@ $RECYCLE.BIN/
 # These should never be under version control,
 # as it poses a security risk.
 .env
+.env.*
+!.env.example
 .vagrant
 Vagrantfile
 
@@ -59,10 +61,12 @@ Vagrantfile
 
 /writable/uploads/*
 !/writable/uploads/index.html
+!/writable/uploads/.htaccess
 
 /writable/debugbar/*
 !/writable/debugbar/index.html
 
+*.log
 php_errors.log
 
 #-------------------------
@@ -77,17 +81,38 @@ php_errors.log
 # Test Files
 #-------------------------
 /tests/coverage*
+.phpunit.result.cache
+.phpunit.cache/
 
 # Don't save phpunit under version control.
 /phpunit
+/phpunit.xml
 
 #-------------------------
-# Composer
+# Composer & Node / Build Artifacts
 #-------------------------
-vendor/
+/vendor/
+/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 #-------------------------
-# IDE / Development Files
+# Database Backups & Local Artifacts
+#-------------------------
+*.sql
+*.sql.gz
+*.sqlite
+*.sqlite3
+*.db
+*.bak
+*.tmp
+*.swp
+*.bkp
+*.drawio.bkp
+
+#-------------------------
+# IDE / Development / AI Agent Files
 #-------------------------
 
 # Modules Testing
@@ -119,8 +144,10 @@ _modules/*
 .phpintel
 /api/
 
-# Visual Studio Code
+# Visual Studio Code / Cursor / Antigravity
 .vscode/
+.cursor/
+.agent/
+.gemini/
 
 /results/
-/phpunit.xml

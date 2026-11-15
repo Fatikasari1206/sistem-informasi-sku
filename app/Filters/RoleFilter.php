@@ -12,13 +12,44 @@ class RoleFilter implements FilterInterface
     {
         $session = session();
         if (!$session->get('isLoggedIn')) {
-            return redirect()->to('/login')->with('error', 'Silakan login terlebih dahulu.');
+            $firstSegment = $request->getUri()->getSegment(1);
+            $loginPath    = in_array($firstSegment, ['admin', 'staf', 'lurah'], true) ? '/admin' : '/login';
+
+            return redirect()->to($loginPath)->with('error', 'Silakan login terlebih dahulu.');
         }
 
-        $userRole = $session->get('role');
+        $userId = (int) $session->get('userId');
+        $user   = $userId > 0 ? (new \App\Models\UserModel())->find($userId) : null;
+
+        if (!$user || (int) ($user['status_aktif'] ?? 0) !== 1) {
+            $firstSegment = $request->getUri()->getSegment(1);
+            $loginPath    = in_array($firstSegment, ['admin', 'staf', 'lurah'], true) ? '/admin' : '/login';
+            $session->destroy();
+
+            return redirect()->to($loginPath)->with('error', 'Sesi berakhir atau akun Anda telah dinonaktifkan.');
+        }
+
+        $userRole = (string) $user['role'];
+        if ($session->get('role') !== $userRole || $session->get('namaLengkap') !== $user['nama_lengkap']) {
+            $session->set([
+                'role'        => $userRole,
+                'namaLengkap' => $user['nama_lengkap'],
+                'nik'         => $user['nik'],
+                'nip'         => $user['nip'] ?? null,
+            ]);
+        }
+
+        // Pastikan sesi yang sudah login sebelum fitur log_login dibuat tetap tercatat 1x
+        if (!$session->get('loginLogged')) {
+            try {
+                (new \App\Models\LogLoginModel())->recordLogin($user, (string) $request->getIPAddress());
+                $session->set('loginLogged', true);
+            } catch (\Throwable $e) {
+                log_message('error', 'Gagal mencatat sesi aktif ke log_login: ' . $e->getMessage());
+            }
+        }
 
         if (!empty($arguments) && !in_array($userRole, $arguments, true)) {
-            // Redirect to appropriate dashboard based on actual role
             $dashboardMap = [
                 'admin'   => '/admin/dashboard',
                 'staf'    => '/staf/dashboard',

@@ -14,6 +14,7 @@ class UserModel extends Model
     protected $protectFields    = true;
     protected $allowedFields    = [
         'nik',
+        'nip',
         'nama_lengkap',
         'email',
         'password_hash',
@@ -22,6 +23,7 @@ class UserModel extends Model
         'rt',
         'rw',
         'role',
+        'jabatan',
         'foto_profil',
         'status_aktif',
         'created_at',
@@ -44,6 +46,17 @@ class UserModel extends Model
     public function findByNik(string $nik)
     {
         return $this->where('nik', $nik)->first();
+    }
+
+    // Cari aparatur berdasarkan NIP (tanpa mempedulikan spasi)
+    public function findByNip(string $nip)
+    {
+        $normalized = preg_replace('/\D/', '', $nip);
+        if ($normalized === '') {
+            return null;
+        }
+
+        return $this->where("REPLACE(nip, ' ', '') =", $normalized)->first();
     }
 
     // Hitung total user per role untuk dashboard

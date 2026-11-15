@@ -1,117 +1,157 @@
-<?= $this->extend('layouts/main') ?>
+<?= $this->extend('layouts/dashboard') ?>
+
+<?php
+$statusMap = [
+    'diajukan'                   => ['label' => 'Menunggu Staf', 'class' => 'status-amber'],
+    'verifikasi_staf'            => ['label' => 'Verifikasi Staf', 'class' => 'status-neutral'],
+    'revisi'                     => ['label' => 'Perlu Revisi', 'class' => 'status-red'],
+    'menunggu_persetujuan_lurah' => ['label' => 'Siap TTE', 'class' => 'status-indigo'],
+    'disetujui'                  => ['label' => 'Sah Legal', 'class' => 'status-green'],
+    'selesai'                    => ['label' => 'Sah Legal', 'class' => 'status-green'],
+    'ditolak'                    => ['label' => 'Ditolak', 'class' => 'status-red'],
+];
+
+$barColors = ['#6d28d9', '#4f46e5', '#3b82f6', '#06b6d4', '#10b981', '#f59e0b'];
+$maxTotal  = 1;
+foreach ($padukuhanDistribusi as $item) {
+    if ((int) $item['total'] > $maxTotal) {
+        $maxTotal = (int) $item['total'];
+    }
+}
+?>
+
+<?= $this->section('styles') ?>
+    <?= $this->include('staf/_styles') ?>
+<?= $this->endSection() ?>
+
+<?= $this->section('sidebar_nav') ?>
+    <?= view('lurah/_sidebar_nav', ['activeMenu' => 'dashboard']) ?>
+<?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
-<div style="margin-bottom: 2rem;">
-    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-        <div>
-            <h1 style="font-size: 1.75rem; font-weight: 800; color: var(--secondary); letter-spacing: -0.02em;">
-                Dashboard Persetujuan Lurah
-            </h1>
-            <p style="color: var(--text-muted); font-size: 0.92rem; margin-top: 0.25rem;">
-                Otorisasi pengesahan dan penandatanganan Surat Keterangan Usaha yang telah lolos verifikasi staf.
-            </p>
+    <!-- 3 KPI Cards -->
+    <section class="kpi-grid-3" aria-label="Ringkasan Pengajuan SKU">
+        <div class="kpi-card">
+            <div class="kpi-label">TOTAL PENGAJUAN SKU</div>
+            <div class="kpi-value"><?= (int) $stats['total_sku'] ?> Pengajuan</div>
         </div>
-        <div>
-            <span class="badge" style="background: var(--purple-light); color: var(--purple); font-size: 0.85rem; padding: 0.5rem 1rem;">
-                <i class="fa-solid fa-signature"></i> Pejabat Penandatangan: <?= esc(session()->get('namaLengkap')) ?>
-            </span>
+        <div class="kpi-card">
+            <div class="kpi-label">BERKAS MENUNGGU TTE</div>
+            <div class="kpi-value"><?= (int) $stats['menunggu_tte'] ?> Berkas</div>
         </div>
-    </div>
-</div>
+        <div class="kpi-card">
+            <div class="kpi-label">PADUKUHAN TERAKTIF</div>
+            <div class="kpi-value"><?= esc($stats['top_padukuhan']) ?></div>
+        </div>
+    </section>
 
-<!-- Stat Grid -->
-<div class="stat-grid">
-    <div class="stat-card">
-        <div class="stat-icon purple">
-            <i class="fa-solid fa-stamp"></i>
+    <!-- Grafik Distribusi Wilayah Padukuhan (Top 6) -->
+    <section class="panel-card">
+        <div class="panel-head">
+            <h2 class="panel-title">Distribusi Pengajuan SKU Berdasarkan Wilayah Padukuhan (Top 6)</h2>
         </div>
-        <div class="stat-meta">
-            <h3><?= $stats['menunggu_approval'] ?></h3>
-            <p>Menunggu Tanda Tangan</p>
-        </div>
-    </div>
 
-    <div class="stat-card">
-        <div class="stat-icon green">
-            <i class="fa-solid fa-circle-check"></i>
-        </div>
-        <div class="stat-meta">
-            <h3><?= $stats['disetujui'] ?></h3>
-            <p>Telah Disetujui</p>
-        </div>
-    </div>
+        <?php if (empty($padukuhanDistribusi)): ?>
+            <div class="empty-state">
+                <strong>Belum ada data distribusi pengajuan SKU</strong>
+            </div>
+        <?php else: ?>
+            <div class="chart-list">
+                <?php foreach ($padukuhanDistribusi as $idx => $item): ?>
+                    <?php
+                        $count = (int) $item['total'];
+                        $pct   = max(8, (int) round(($count / $maxTotal) * 100));
+                        $color = $barColors[$idx % count($barColors)];
+                    ?>
+                    <div class="chart-row">
+                        <span class="chart-label">Padukuhan <?= esc($item['padukuhan']) ?></span>
+                        <div class="chart-track">
+                            <div class="chart-fill" style="width: <?= $pct ?>%; background: <?= $color ?>;"></div>
+                        </div>
+                        <span class="chart-count"><?= $count ?> SKU</span>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+    </section>
 
-    <div class="stat-card">
-        <div class="stat-icon blue">
-            <i class="fa-solid fa-certificate"></i>
-        </div>
-        <div class="stat-meta">
-            <h3><?= $stats['total_terbit'] ?></h3>
-            <p>Total SKU Resmi Diterbitkan</p>
-        </div>
-    </div>
-</div>
+    <!-- Tabel Informasi Pengajuan & Pengesahan SKU -->
+    <section class="panel-card">
+        <div class="panel-head">
+            <h2 class="panel-title">Daftar Pengajuan Surat Keterangan Usaha (SKU)</h2>
 
-<!-- Antrean TTD Lurah -->
-<div class="card">
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
-        <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--secondary); display: flex; align-items: center; gap: 0.5rem;">
-            <i class="fa-solid fa-file-signature text-purple"></i> Antrean Surat Siap Disahkan
-        </h3>
-    </div>
-
-    <?php if (empty($menunggu)): ?>
-        <div style="text-align: center; padding: 3rem 1rem; color: var(--text-muted);">
-            <div style="font-size: 2.5rem; color: #cbd5e1; margin-bottom: 0.75rem;"><i class="fa-solid fa-award"></i></div>
-            <p style="font-size: 0.95rem; font-weight: 600;">Tidak ada surat yang menunggu tanda tangan saat ini.</p>
-            <span style="font-size: 0.82rem;">Semua berkas yang telah diverifikasi staf telah ditandatangani.</span>
+            <select id="filter-padukuhan" class="filter-select" aria-label="Filter berdasarkan padukuhan">
+                <option value="">Padukuhan</option>
+                <?php foreach ($padukuhanList as $p): ?>
+                    <option value="<?= esc($p) ?>"><?= esc($p) ?></option>
+                <?php endforeach; ?>
+            </select>
         </div>
-    <?php else: ?>
-        <div class="table-responsive">
-            <table class="table-modern">
-                <thead>
-                    <tr>
-                        <th>Kode & Tanggal</th>
-                        <th>Pemohon</th>
-                        <th>Nama & Bidang Usaha</th>
-                        <th>Nomor Draft Surat</th>
-                        <th>Status</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($menunggu as $row): ?>
+
+        <?php if (empty($daftarSku)): ?>
+            <div class="empty-state">
+                <strong>Belum ada pengajuan SKU</strong>
+            </div>
+        <?php else: ?>
+            <div class="table-wrap">
+                <table class="staf-table" id="staf-queue-table">
+                    <thead>
                         <tr>
-                            <td>
-                                <strong><?= esc($row['kode_pengajuan']) ?></strong><br>
-                                <span style="font-size: 0.75rem; color: var(--text-muted);"><?= date('d M Y', strtotime($row['created_at'])) ?></span>
-                            </td>
-                            <td>
-                                <strong><?= esc($row['nama_pemohon']) ?></strong><br>
-                                <span style="font-size: 0.75rem; color: var(--text-muted);">NIK: <?= esc($row['nik_pemohon']) ?></span>
-                            </td>
-                            <td>
-                                <strong><?= esc($row['nama_usaha']) ?></strong><br>
-                                <span style="font-size: 0.75rem; color: var(--text-muted);"><?= esc($row['bidang_usaha']) ?></span>
-                            </td>
-                            <td>
-                                <code style="background: #f1f5f9; padding: 2px 6px; border-radius: 4px;"><?= esc($row['nomor_surat'] ?? 'Otomatis digenerate') ?></code>
-                            </td>
-                            <td>
-                                <span class="badge badge-menunggu_persetujuan_lurah">
-                                    Siap TTD
-                                </span>
-                            </td>
-                            <td>
-                                <a href="<?= base_url('lurah/review/' . $row['id']) ?>" class="btn btn-primary btn-sm" style="background: linear-gradient(135deg, var(--purple) 0%, #6d28d9 100%);">
-                                    <i class="fa-solid fa-signature"></i> Tinjau & Sahkan
-                                </a>
-                            </td>
+                            <th>NO. REGISTRASI / SKU</th>
+                            <th>PEMOHON &amp; NIK</th>
+                            <th>NAMA USAHA</th>
+                            <th>PADUKUHAN</th>
+                            <th>TANGGAL</th>
+                            <th>STATUS</th>
+                            <th>AKSI</th>
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
-    <?php endif; ?>
-</div>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($daftarSku as $row): ?>
+                            <?php
+                                $statusKey  = $row['status'] ?? 'diajukan';
+                                $statusMeta = $statusMap[$statusKey] ?? ['label' => 'Diproses', 'class' => 'status-neutral'];
+                                $padukuhan  = !empty($row['padukuhan']) ? $row['padukuhan'] : '-';
+                                $nomorTampil = !empty($row['nomor_surat']) ? $row['nomor_surat'] : $row['kode_pengajuan'];
+                                $waktuTampil = !empty($row['disetujui_pada']) ? $row['disetujui_pada'] : $row['created_at'];
+                                $canSign    = $statusKey === 'menunggu_persetujuan_lurah';
+                            ?>
+                            <tr data-padukuhan="<?= esc($padukuhan) ?>">
+                                <td class="cell-strong"><?= esc($nomorTampil) ?></td>
+                                <td>
+                                    <span class="pemohon-name"><?= esc($row['nama_pemohon']) ?></span>
+                                    <span class="pemohon-nik"><?= esc($row['nik_pemohon']) ?></span>
+                                </td>
+                                <td class="cell-strong"><?= esc($row['nama_usaha']) ?></td>
+                                <td><?= esc($padukuhan) ?></td>
+                                <td><?= date('d M Y H:i', strtotime($waktuTampil)) ?></td>
+                                <td>
+                                    <span class="pill-badge <?= esc($statusMeta['class']) ?>">
+                                        <?= esc($statusMeta['label']) ?>
+                                    </span>
+                                </td>
+                                <td>
+                                    <a href="<?= base_url('lurah/tte/' . (int) $row['id']) ?>" class="action-btn <?= $canSign ? '' : 'slate' ?>">
+                                        <?= $canSign ? 'Sahkan TTE' : 'Lihat' ?>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="staf-pagination"></div>
+
+            <?php if ((int) $stats['menunggu_tte'] > 0): ?>
+                <div class="panel-footer-cta">
+                    <a href="<?= base_url('lurah/pengesahan') ?>" class="cta-btn-lg">Buka Ruang Penandatanganan TTE</a>
+                </div>
+            <?php endif; ?>
+        <?php endif; ?>
+    </section>
+<?= $this->endSection() ?>
+
+<?= $this->section('scripts') ?>
+    <?= $this->include('staf/_table_filter_script') ?>
 <?= $this->endSection() ?>
