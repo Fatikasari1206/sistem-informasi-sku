@@ -1,4 +1,4 @@
-<?php if (($part ?? 'body') === 'styles'): ?>
+<style>
     .doc-modal-backdrop {
         position: fixed;
         inset: 0;
@@ -83,7 +83,7 @@
         border-radius: 8px;
         background: #ffffff;
     }
-<?php else: ?>
+</style>
 <div class="doc-modal-backdrop" id="doc-preview-modal" role="dialog" aria-modal="true" aria-labelledby="doc-modal-title">
     <div class="doc-modal-card">
         <div class="doc-modal-head">
@@ -136,4 +136,3 @@
         });
     })();
 </script>
-<?php endif; ?>

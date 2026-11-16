@@ -1,177 +1,3 @@
-<?php if (($part ?? 'body') === 'styles'): ?>
-        .letter-sheet {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 10px;
-            padding: 2rem 2.35rem;
-        }
-
-        .kop-surat {
-            text-align: center;
-            padding-bottom: 0.85rem;
-            border-bottom: 2.5px solid #0f172a;
-            margin-bottom: 1.25rem;
-        }
-
-        .kop-line-1 {
-            font-size: 0.82rem;
-            font-weight: 700;
-            letter-spacing: 0.04em;
-            color: #0f172a;
-        }
-
-        .kop-line-2 {
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 0.04em;
-            color: #0f172a;
-            margin-top: 0.1rem;
-        }
-
-        .kop-line-3 {
-            font-size: 0.98rem;
-            font-weight: 800;
-            letter-spacing: 0.05em;
-            color: #0f172a;
-            margin-top: 0.14rem;
-        }
-
-        .kop-contact {
-            font-size: 0.68rem;
-            color: #64748b;
-            margin-top: 0.32rem;
-        }
-
-        .surat-title-block {
-            text-align: center;
-            margin-bottom: 1.25rem;
-        }
-
-        .surat-title {
-            font-size: 0.92rem;
-            font-weight: 800;
-            color: #0f172a;
-            letter-spacing: 0.02em;
-            text-decoration: underline;
-            text-underline-offset: 4px;
-        }
-
-        .surat-nomor {
-            font-size: 0.78rem;
-            font-weight: 600;
-            color: #334155;
-            margin-top: 0.35rem;
-        }
-
-        .surat-para {
-            font-size: 0.8rem;
-            line-height: 1.6;
-            color: #1e293b;
-            margin-bottom: 0.75rem;
-        }
-
-        .bio-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 0.35rem 0 0.95rem;
-        }
-
-        .bio-table td {
-            padding: 0.22rem 0.2rem;
-            font-size: 0.79rem;
-            vertical-align: top;
-            color: #0f172a;
-        }
-
-        .bio-label {
-            width: 185px;
-            color: #475569;
-        }
-
-        .bio-sep {
-            width: 16px;
-            color: #475569;
-        }
-
-        .bio-val-strong {
-            font-weight: 700;
-        }
-
-        .validity-box {
-            margin-top: 0.95rem;
-            padding: 0.68rem 0.9rem;
-            border: 1px solid #e2e8f0;
-            border-radius: 6px;
-            background: #f8fafc;
-            font-size: 0.76rem;
-            color: #1e293b;
-            line-height: 1.5;
-        }
-
-        .validity-box strong {
-            color: #0f172a;
-        }
-
-        .tte-sign-row {
-            display: flex;
-            justify-content: flex-end;
-            margin-top: 1.35rem;
-        }
-
-        .tte-sign-box {
-            border: 1px solid #cbd5e1;
-            border-radius: 8px;
-            padding: 0.78rem 0.95rem;
-            background: #f8fafc;
-            min-width: 295px;
-        }
-
-        .tte-sign-head {
-            font-size: 0.68rem;
-            font-weight: 700;
-            color: #334155;
-            margin-bottom: 0.5rem;
-            line-height: 1.45;
-        }
-
-        .tte-sign-content {
-            display: flex;
-            align-items: center;
-            gap: 0.7rem;
-        }
-
-        .qr-box {
-            width: 48px;
-            height: 48px;
-            border-radius: 6px;
-            background: #1e293b;
-            color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.62rem;
-            font-weight: 800;
-            line-height: 1.15;
-            flex-shrink: 0;
-        }
-
-        .qr-box.is-signed {
-            background: #15803d;
-        }
-
-        .sign-name {
-            font-size: 0.73rem;
-            font-weight: 800;
-            color: #0f172a;
-        }
-
-        .sign-meta {
-            font-size: 0.66rem;
-            color: #475569;
-            margin-top: 0.12rem;
-        }
-<?php else: ?>
 <?php
 $statusTempatMap = [
     'milik_sendiri' => 'Milik Sendiri',
@@ -227,6 +53,206 @@ $bsreTokenText = !empty($permohonan['qr_token'])
     ? 'BSrE BSSN Token: ' . $permohonan['qr_token']
     : 'BSrE BSSN Ready (Token diterbitkan saat disahkan)';
 ?>
+<style>
+    .letter-sheet {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 10px;
+        padding: 2rem 2.35rem;
+    }
+
+    .kop-surat {
+        text-align: center;
+        padding-bottom: 0.85rem;
+        border-bottom: 2.5px solid #0f172a;
+        margin-bottom: 1.25rem;
+    }
+
+    .kop-line-1 {
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        color: #0f172a;
+    }
+
+    .kop-line-2 {
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        color: #0f172a;
+        margin-top: 0.1rem;
+    }
+
+    .kop-line-3 {
+        font-size: 0.98rem;
+        font-weight: 800;
+        letter-spacing: 0.05em;
+        color: #0f172a;
+        margin-top: 0.14rem;
+    }
+
+    .kop-contact {
+        font-size: 0.68rem;
+        color: #64748b;
+        margin-top: 0.32rem;
+    }
+
+    .surat-title-block {
+        text-align: center;
+        margin-bottom: 1.25rem;
+    }
+
+    .surat-title {
+        font-size: 0.92rem;
+        font-weight: 800;
+        color: #0f172a;
+        letter-spacing: 0.02em;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+    }
+
+    .surat-nomor {
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: #334155;
+        margin-top: 0.35rem;
+    }
+
+    .surat-para {
+        font-size: 0.8rem;
+        line-height: 1.6;
+        color: #1e293b;
+        margin-bottom: 0.75rem;
+    }
+
+    .bio-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 0.35rem 0 0.95rem;
+    }
+
+    .bio-table td {
+        padding: 0.22rem 0.2rem;
+        font-size: 0.79rem;
+        vertical-align: top;
+        color: #0f172a;
+    }
+
+    .bio-label {
+        width: 185px;
+        color: #475569;
+    }
+
+    .bio-sep {
+        width: 16px;
+        color: #475569;
+    }
+
+    .bio-val-strong {
+        font-weight: 700;
+    }
+
+    .validity-box {
+        margin-top: 0.95rem;
+        padding: 0.68rem 0.9rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        background: #f8fafc;
+        font-size: 0.76rem;
+        color: #1e293b;
+        line-height: 1.5;
+    }
+
+    .validity-box strong {
+        color: #0f172a;
+    }
+
+    .tte-sign-row {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 1.35rem;
+    }
+
+    .tte-sign-box {
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        padding: 0.78rem 0.95rem;
+        background: #f8fafc;
+        min-width: 295px;
+    }
+
+    .tte-sign-head {
+        font-size: 0.68rem;
+        font-weight: 700;
+        color: #334155;
+        margin-bottom: 0.5rem;
+        line-height: 1.45;
+    }
+
+    .tte-sign-content {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+    }
+
+    .qr-box {
+        width: 48px;
+        height: 48px;
+        border-radius: 6px;
+        background: #1e293b;
+        color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.62rem;
+        font-weight: 800;
+        line-height: 1.15;
+        flex-shrink: 0;
+    }
+
+    .qr-box.is-signed {
+        background: #15803d;
+    }
+
+    .sign-name {
+        font-size: 0.73rem;
+        font-weight: 800;
+        color: #0f172a;
+    }
+
+    .sign-meta {
+        font-size: 0.66rem;
+        color: #475569;
+        margin-top: 0.12rem;
+    }
+
+    @page {
+        size: A4 portrait;
+        margin: 0;
+    }
+
+    @media print {
+        body {
+            background: #ffffff !important;
+            padding: 18mm 20mm !important;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .letter-sheet {
+            border: none !important;
+            box-shadow: none !important;
+            padding: 0 !important;
+        }
+
+        #toolbarContainer,
+        #debug-icon,
+        .debug-bar {
+            display: none !important;
+        }
+    }
+</style>
 <div class="letter-sheet">
     <div class="kop-surat">
         <div class="kop-line-1">PEMERINTAH <?= esc($kabupatenKota) ?></div>
@@ -324,4 +350,3 @@ $bsreTokenText = !empty($permohonan['qr_token'])
         </div>
     </div>
 </div>
-<?php endif; ?>

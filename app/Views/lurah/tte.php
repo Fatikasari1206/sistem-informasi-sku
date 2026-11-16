@@ -175,9 +175,6 @@ $namaKalurahan = strtoupper((string) ($pengaturan['nama_kalurahan'] ?? 'Condongc
             color: #64748b;
         }
 
-        /* Letter Document Sheet */
-        <?= view('partials/_sku_letter_sheet', ['part' => 'styles'], ['saveData' => false]) ?>
-
         .tte-actions {
             display: flex;
             align-items: center;
@@ -337,11 +334,6 @@ $namaKalurahan = strtoupper((string) ($pengaturan['nama_kalurahan'] ?? 'Condongc
         }
 
         @media print {
-            body {
-                background: #ffffff;
-                padding: 0;
-            }
-
             .tte-topbar,
             .queue-panel,
             .tte-actions,
@@ -355,11 +347,6 @@ $namaKalurahan = strtoupper((string) ($pengaturan['nama_kalurahan'] ?? 'Condongc
 
             .letter-panel {
                 box-shadow: none;
-                padding: 0;
-            }
-
-            .letter-sheet {
-                border: none;
                 padding: 0;
             }
         }
@@ -409,7 +396,7 @@ $namaKalurahan = strtoupper((string) ($pengaturan['nama_kalurahan'] ?? 'Condongc
             </aside>
 
             <main class="letter-panel">
-                <?= view('partials/_sku_letter_sheet', ['part' => 'body', 'permohonan' => $permohonan, 'pengaturan' => $pengaturan]) ?>
+                <?= view('partials/_sku_letter_sheet', ['permohonan' => $permohonan, 'pengaturan' => $pengaturan]) ?>
 
                 <?php if ($isPendingTte): ?>
                     <div class="tte-actions">

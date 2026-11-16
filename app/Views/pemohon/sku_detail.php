@@ -301,9 +301,6 @@ $steps = [
         background: #eef2ff;
     }
 
-    /* Popup Preview Modal */
-    <?= view('pemohon/_doc_preview_modal', ['part' => 'styles'], ['saveData' => false]) ?>
-
     @media (max-width: 900px) {
         .stepper {
             grid-template-columns: repeat(2, 1fr);
@@ -466,5 +463,5 @@ $steps = [
 <?= $this->endSection() ?>
 
 <?= $this->section('scripts') ?>
-<?= view('pemohon/_doc_preview_modal', ['part' => 'body']) ?>
+<?= $this->include('pemohon/_doc_preview_modal') ?>
 <?= $this->endSection() ?>

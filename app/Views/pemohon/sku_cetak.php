@@ -66,22 +66,9 @@
             box-shadow: 0 4px 12px rgba(82, 70, 240, 0.25);
         }
 
-        <?= view('partials/_sku_letter_sheet', ['part' => 'styles'], ['saveData' => false]) ?>
-
         @media print {
-            body {
-                background: #ffffff;
-                padding: 0;
-            }
-
             .print-topbar {
                 display: none !important;
-            }
-
-            .letter-sheet {
-                border: none;
-                box-shadow: none;
-                padding: 0;
             }
         }
     </style>
@@ -94,7 +81,7 @@
         </header>
 
         <main>
-            <?= view('partials/_sku_letter_sheet', ['part' => 'body', 'permohonan' => $permohonan, 'pengaturan' => $pengaturan]) ?>
+            <?= view('partials/_sku_letter_sheet', ['permohonan' => $permohonan, 'pengaturan' => $pengaturan]) ?>
         </main>
     </div>
 </body>

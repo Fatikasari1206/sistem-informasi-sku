@@ -1,0 +1,317 @@
+<mxfile host="app.diagrams.net" modified="2026-11-16T21:10:00.000Z" agent="Mozilla/5.0" version="24.7.17" type="device">
+  <diagram id="diagram-hipo-sku" name="Diagram HIPO Sistem Informasi SKU">
+    <mxGraphModel dx="1120" dy="1120" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1060" pageHeight="1060" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="root_sys" value="SISTEM INFORMASI&lt;br&gt;PEMBUATAN SURAT&lt;br&gt;KETERANGAN USAHA&lt;br&gt;(SKU)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontStyle=1;fontFamily=Times New Roman;fontColor=#000000;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="450" y="30" width="220" height="88" as="geometry" />
+        </mxCell>
+        <mxCell id="cat_input" value="Input" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontStyle=1;fontFamily=Times New Roman;fontColor=#000000;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="130" y="190" width="190" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="cat_proses" value="Proses" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontStyle=1;fontFamily=Times New Roman;fontColor=#000000;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="465" y="190" width="190" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="cat_output" value="Output" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontStyle=1;fontFamily=Times New Roman;fontColor=#000000;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="800" y="190" width="190" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="in_1" value="Data Login&lt;br&gt;(Aparatur &amp; Pemohon)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontFamily=Times New Roman;fontColor=#000000;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="130" y="300" width="190" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="in_2" value="Data Master NIK&lt;br&gt;Penduduk" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontFamily=Times New Roman;fontColor=#000000;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="130" y="382" width="190" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="in_3" value="Data Akun Aparatur&lt;br&gt;(Admin / Staf / Lurah)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontFamily=Times New Roman;fontColor=#000000;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="130" y="464" width="190" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="in_4" value="Data Cek NIK &amp;&lt;br&gt;Registrasi Akun Pemohon" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontFamily=Times New Roman;fontColor=#000000;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="130" y="546" width="190" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="in_5" value="Data Permohonan SKU Baru&lt;br&gt;&amp; Berkas Persyaratan" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontFamily=Times New Roman;fontColor=#000000;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="130" y="628" width="190" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="in_6" value="Data Perpanjangan SKU&lt;br&gt;&amp; Berkas Persyaratan" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontFamily=Times New Roman;fontColor=#000000;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="130" y="710" width="190" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="in_7" value="Data &amp; Berkas Revisi&lt;br&gt;Pemohon" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontFamily=Times New Roman;fontColor=#000000;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="130" y="792" width="190" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="in_8" value="Data Verifikasi, Draft&lt;br&gt;Nomor Surat &amp; KBLI" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontFamily=Times New Roman;fontColor=#000000;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="130" y="874" width="190" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="in_9" value="Data Pengesahan TTE&lt;br&gt;&amp; Pengembalian Lurah" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontFamily=Times New Roman;fontColor=#000000;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="130" y="956" width="190" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="proc_1" value="Autentikasi &amp;&lt;br&gt;Pencatatan Log Login" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontFamily=Times New Roman;fontColor=#000000;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="465" y="300" width="190" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="proc_2" value="Pengelolaan Master NIK&lt;br&gt;&amp; Akun Aparatur" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontFamily=Times New Roman;fontColor=#000000;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="465" y="382" width="190" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="proc_3" value="Sinkronisasi NIK &amp;&lt;br&gt;Registrasi Pemohon" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontFamily=Times New Roman;fontColor=#000000;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="465" y="464" width="190" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="proc_4" value="Pengajuan SKU Baru,&lt;br&gt;Perpanjangan &amp; Revisi" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontFamily=Times New Roman;fontColor=#000000;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="465" y="546" width="190" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="proc_5" value="Verifikasi Berkas, Draft&lt;br&gt;Nomor Surat &amp; KBLI" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontFamily=Times New Roman;fontColor=#000000;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="465" y="628" width="190" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="proc_6" value="Pengesahan TTE Digital&lt;br&gt;(QR Token BSrE)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontFamily=Times New Roman;fontColor=#000000;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="465" y="710" width="190" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="out_1" value="Ringkasan Sistem (KPI)&lt;br&gt;&amp; Grafik Log Login" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontFamily=Times New Roman;fontColor=#000000;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="800" y="300" width="190" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="out_2" value="Daftar Akun Aparatur&lt;br&gt;&amp; Master Data NIK" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontFamily=Times New Roman;fontColor=#000000;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="800" y="382" width="190" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="out_3" value="Hasil Cek NIK &amp;&lt;br&gt;Catatan Revisi" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontFamily=Times New Roman;fontColor=#000000;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="800" y="464" width="190" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="out_4" value="Monitoring Status &amp;&lt;br&gt;Timeline Riwayat SKU" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontFamily=Times New Roman;fontColor=#000000;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="800" y="546" width="190" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="out_5" value="Surat Keterangan Usaha&lt;br&gt;(SKU) / Cetak PDF" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontFamily=Times New Roman;fontColor=#000000;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="800" y="628" width="190" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="out_6" value="Daftar Antrian, Verifikasi&lt;br&gt;&amp; Penomoran Surat SKU" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontFamily=Times New Roman;fontColor=#000000;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="800" y="710" width="190" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="out_7" value="Daftar Antrian TTE &amp;&lt;br&gt;Arsip SKU Terbit" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontFamily=Times New Roman;fontColor=#000000;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="800" y="792" width="190" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="out_8" value="Grafik Statistik SKU&lt;br&gt;per Padukuhan" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontFamily=Times New Roman;fontColor=#000000;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="800" y="874" width="190" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="e_root_input" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=#000000;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="root_sys" target="cat_input">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="560" y="152" />
+              <mxPoint x="225" y="152" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_root_proses" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=#000000;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="root_sys" target="cat_proses">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_root_output" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=#000000;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="root_sys" target="cat_output">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="560" y="152" />
+              <mxPoint x="895" y="152" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_cat_input_in_1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;entryX=0;entryY=0.5;" edge="1" parent="1" source="cat_input" target="in_1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="225" y="272" />
+              <mxPoint x="80" y="272" />
+              <mxPoint x="80" y="328" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_cat_input_in_2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;entryX=0;entryY=0.5;" edge="1" parent="1" source="cat_input" target="in_2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="225" y="272" />
+              <mxPoint x="80" y="272" />
+              <mxPoint x="80" y="410" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_cat_input_in_3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;entryX=0;entryY=0.5;" edge="1" parent="1" source="cat_input" target="in_3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="225" y="272" />
+              <mxPoint x="80" y="272" />
+              <mxPoint x="80" y="492" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_cat_input_in_4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;entryX=0;entryY=0.5;" edge="1" parent="1" source="cat_input" target="in_4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="225" y="272" />
+              <mxPoint x="80" y="272" />
+              <mxPoint x="80" y="574" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_cat_input_in_5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;entryX=0;entryY=0.5;" edge="1" parent="1" source="cat_input" target="in_5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="225" y="272" />
+              <mxPoint x="80" y="272" />
+              <mxPoint x="80" y="656" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_cat_input_in_6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;entryX=0;entryY=0.5;" edge="1" parent="1" source="cat_input" target="in_6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="225" y="272" />
+              <mxPoint x="80" y="272" />
+              <mxPoint x="80" y="738" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_cat_input_in_7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;entryX=0;entryY=0.5;" edge="1" parent="1" source="cat_input" target="in_7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="225" y="272" />
+              <mxPoint x="80" y="272" />
+              <mxPoint x="80" y="820" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_cat_input_in_8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;entryX=0;entryY=0.5;" edge="1" parent="1" source="cat_input" target="in_8">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="225" y="272" />
+              <mxPoint x="80" y="272" />
+              <mxPoint x="80" y="902" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_cat_input_in_9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;entryX=0;entryY=0.5;" edge="1" parent="1" source="cat_input" target="in_9">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="225" y="272" />
+              <mxPoint x="80" y="272" />
+              <mxPoint x="80" y="984" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_cat_proses_proc_1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;entryX=0;entryY=0.5;" edge="1" parent="1" source="cat_proses" target="proc_1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="560" y="272" />
+              <mxPoint x="415" y="272" />
+              <mxPoint x="415" y="328" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_cat_proses_proc_2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;entryX=0;entryY=0.5;" edge="1" parent="1" source="cat_proses" target="proc_2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="560" y="272" />
+              <mxPoint x="415" y="272" />
+              <mxPoint x="415" y="410" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_cat_proses_proc_3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;entryX=0;entryY=0.5;" edge="1" parent="1" source="cat_proses" target="proc_3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="560" y="272" />
+              <mxPoint x="415" y="272" />
+              <mxPoint x="415" y="492" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_cat_proses_proc_4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;entryX=0;entryY=0.5;" edge="1" parent="1" source="cat_proses" target="proc_4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="560" y="272" />
+              <mxPoint x="415" y="272" />
+              <mxPoint x="415" y="574" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_cat_proses_proc_5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;entryX=0;entryY=0.5;" edge="1" parent="1" source="cat_proses" target="proc_5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="560" y="272" />
+              <mxPoint x="415" y="272" />
+              <mxPoint x="415" y="656" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_cat_proses_proc_6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;entryX=0;entryY=0.5;" edge="1" parent="1" source="cat_proses" target="proc_6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="560" y="272" />
+              <mxPoint x="415" y="272" />
+              <mxPoint x="415" y="738" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_cat_output_out_1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;entryX=0;entryY=0.5;" edge="1" parent="1" source="cat_output" target="out_1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="895" y="272" />
+              <mxPoint x="750" y="272" />
+              <mxPoint x="750" y="328" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_cat_output_out_2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;entryX=0;entryY=0.5;" edge="1" parent="1" source="cat_output" target="out_2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="895" y="272" />
+              <mxPoint x="750" y="272" />
+              <mxPoint x="750" y="410" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_cat_output_out_3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;entryX=0;entryY=0.5;" edge="1" parent="1" source="cat_output" target="out_3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="895" y="272" />
+              <mxPoint x="750" y="272" />
+              <mxPoint x="750" y="492" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_cat_output_out_4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;entryX=0;entryY=0.5;" edge="1" parent="1" source="cat_output" target="out_4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="895" y="272" />
+              <mxPoint x="750" y="272" />
+              <mxPoint x="750" y="574" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_cat_output_out_5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;entryX=0;entryY=0.5;" edge="1" parent="1" source="cat_output" target="out_5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="895" y="272" />
+              <mxPoint x="750" y="272" />
+              <mxPoint x="750" y="656" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_cat_output_out_6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;entryX=0;entryY=0.5;" edge="1" parent="1" source="cat_output" target="out_6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="895" y="272" />
+              <mxPoint x="750" y="272" />
+              <mxPoint x="750" y="738" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_cat_output_out_7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;entryX=0;entryY=0.5;" edge="1" parent="1" source="cat_output" target="out_7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="895" y="272" />
+              <mxPoint x="750" y="272" />
+              <mxPoint x="750" y="820" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_cat_output_out_8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;entryX=0;entryY=0.5;" edge="1" parent="1" source="cat_output" target="out_8">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="895" y="272" />
+              <mxPoint x="750" y="272" />
+              <mxPoint x="750" y="902" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

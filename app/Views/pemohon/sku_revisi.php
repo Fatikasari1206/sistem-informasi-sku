@@ -219,8 +219,6 @@
         padding: 0.52rem 0.72rem;
     }
 
-    <?= view('pemohon/_doc_preview_modal', ['part' => 'styles'], ['saveData' => false]) ?>
-
     @media (max-width: 900px) {
         .stepper {
             grid-template-columns: repeat(2, 1fr);
@@ -468,5 +466,5 @@ $omsetFormatted    = $omsetDigits !== '' ? number_format((int) $omsetDigits, 0, 
 
 <?= $this->section('scripts') ?>
 <?= $this->include('pemohon/_sku_form_scripts') ?>
-<?= view('pemohon/_doc_preview_modal', ['part' => 'body']) ?>
+<?= $this->include('pemohon/_doc_preview_modal') ?>
 <?= $this->endSection() ?>

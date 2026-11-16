@@ -1,0 +1,73 @@
+<mxfile host="app.diagrams.net" modified="2026-11-16T21:05:00.000Z" agent="Mozilla/5.0" version="24.7.17" type="device">
+  <diagram id="diagram-konteks-sku" name="Diagram Konteks Sistem Informasi SKU">
+    <mxGraphModel dx="1200" dy="850" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1160" pageHeight="820" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="sys_main" value="SISTEM INFORMASI&lt;br&gt;PEMBUATAN SURAT&lt;br&gt;KETERANGAN USAHA (SKU)" style="shape=ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontStyle=1;fontSize=13;fontFamily=Times New Roman;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="470" y="290" width="220" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="ent_pemohon" value="PEMOHON" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontStyle=1;fontSize=13;fontFamily=Times New Roman;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="510" y="30" width="140" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="ent_admin" value="ADMIN" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontStyle=1;fontSize=13;fontFamily=Times New Roman;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="30" y="365" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ent_staf" value="STAF KALURAHAN" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontStyle=1;fontSize=13;fontFamily=Times New Roman;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="990" y="365" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ent_lurah" value="LURAH" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontStyle=1;fontSize=13;fontFamily=Times New Roman;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="510" y="725" width="140" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_sys_pemohon" value="Hasil_Cek_NIK&lt;br&gt;Catatan_Revisi&lt;br&gt;Monitoring_Status_&amp;_Timeline&lt;br&gt;Surat_Keterangan_Usaha_(SKU)" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;spacingTop=2;spacingBottom=2;fontFamily=Times New Roman;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="330" y="140" width="200" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_pemohon_sys" value="Cek_NIK_&amp;_Registrasi&lt;br&gt;Login_Pemohon&lt;br&gt;Data_Permohonan_SKU_Baru&lt;br&gt;Data_Perpanjangan_SKU&lt;br&gt;Data_Usaha_&amp;_Berkas_Persyaratan&lt;br&gt;Data_&amp;_Berkas_Revisi" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;spacingTop=2;spacingBottom=2;fontFamily=Times New Roman;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="630" y="120" width="235" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_sys_admin" value="Ringkasan_Sistem_KPI&lt;br&gt;Grafik_Log_Login&lt;br&gt;Daftar_Aparatur&lt;br&gt;Daftar_Master_NIK" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;spacingTop=2;spacingBottom=2;fontFamily=Times New Roman;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="225" y="275" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_admin_sys" value="Login_Aparatur&lt;br&gt;Data_Master_NIK&lt;br&gt;Data_Akun_Aparatur" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;spacingTop=2;spacingBottom=2;fontFamily=Times New Roman;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="225" y="430" width="180" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_sys_staf" value="Daftar_Antrian_SKU_Masuk&lt;br&gt;Data_Pemohon_&amp;_Berkas_Persyaratan&lt;br&gt;Catatan_Pengembalian_Lurah&lt;br&gt;Daftar_Verifikasi_&amp;_Penomoran_SKU" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;spacingTop=2;spacingBottom=2;fontFamily=Times New Roman;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="725" y="275" width="245" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_staf_sys" value="Login_Staf&lt;br&gt;Data_Verifikasi_&amp;_Catatan_Revisi&lt;br&gt;Draft_Nomor_Surat_&amp;_KBLI" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;spacingTop=2;spacingBottom=2;fontFamily=Times New Roman;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="725" y="430" width="230" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_sys_lurah" value="Daftar_Antrian_&amp;_Draft_SKU&lt;br&gt;Grafik_Statistik_Padukuhan&lt;br&gt;Arsip_SKU_Terbit" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;spacingTop=2;spacingBottom=2;fontFamily=Times New Roman;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="330" y="575" width="200" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_lurah_sys" value="Login_Lurah&lt;br&gt;Pengesahan_TTE_Digital_(QR_BSrE)&lt;br&gt;Catatan_Pengembalian_ke_Staf" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;spacingTop=2;spacingBottom=2;fontFamily=Times New Roman;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="630" y="575" width="230" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="e_sys_pemohon" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=#000000;strokeWidth=1.2;fontSize=12;fontFamily=Times New Roman;fontColor=#000000;exitX=0.3409;exitY=0.026;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="sys_main" target="ent_pemohon">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_pemohon_sys" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=#000000;strokeWidth=1.2;fontSize=12;fontFamily=Times New Roman;fontColor=#000000;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.6591;entryY=0.026;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="ent_pemohon" target="sys_main">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_sys_admin" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=#000000;strokeWidth=1.2;fontSize=12;fontFamily=Times New Roman;fontColor=#000000;exitX=0.0064;exitY=0.4205;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="sys_main" target="ent_admin">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_admin_sys" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=#000000;strokeWidth=1.2;fontSize=12;fontFamily=Times New Roman;fontColor=#000000;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0.0064;entryY=0.5795;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="ent_admin" target="sys_main">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_sys_staf" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=#000000;strokeWidth=1.2;fontSize=12;fontFamily=Times New Roman;fontColor=#000000;exitX=0.9936;exitY=0.4205;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="sys_main" target="ent_staf">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_staf_sys" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=#000000;strokeWidth=1.2;fontSize=12;fontFamily=Times New Roman;fontColor=#000000;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=0.9936;entryY=0.5795;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="ent_staf" target="sys_main">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_sys_lurah" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=#000000;strokeWidth=1.2;fontSize=12;fontFamily=Times New Roman;fontColor=#000000;exitX=0.3409;exitY=0.974;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="sys_main" target="ent_lurah">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_lurah_sys" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=#000000;strokeWidth=1.2;fontSize=12;fontFamily=Times New Roman;fontColor=#000000;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.6591;entryY=0.974;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="ent_lurah" target="sys_main">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

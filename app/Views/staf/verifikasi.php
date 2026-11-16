@@ -93,6 +93,7 @@ $statusMap = [
                     </tbody>
                 </table>
             </div>
+            <div class="table-pagination-footer" id="staf-pagination"></div>
         <?php endif; ?>
     </section>
 <?= $this->endSection() ?>
