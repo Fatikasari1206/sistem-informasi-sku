@@ -60,8 +60,6 @@ window.initTablePagination = function(options) {
             }
         });
 
-        var rangeText = (startIdx + 1) + '-' + endIdx + ' dari ' + totalItems.toLocaleString('id-ID');
-
         var pagesHtml    = '';
         var prevDisabled = currentPage === 1 ? 'disabled' : '';
         var nextDisabled = currentPage === totalPages ? 'disabled' : '';

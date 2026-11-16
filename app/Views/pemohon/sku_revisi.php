@@ -219,95 +219,7 @@
         padding: 0.52rem 0.72rem;
     }
 
-    .doc-modal-backdrop {
-        position: fixed;
-        inset: 0;
-        background: rgba(15, 23, 42, 0.65);
-        backdrop-filter: blur(2px);
-        display: none;
-        align-items: center;
-        justify-content: center;
-        padding: 1.25rem;
-        z-index: 9999;
-    }
-
-    .doc-modal-backdrop.is-open {
-        display: flex;
-    }
-
-    .doc-modal {
-        width: 100%;
-        max-width: 820px;
-        max-height: 90vh;
-        background: #ffffff;
-        border-radius: 16px;
-        box-shadow: 0 24px 48px rgba(15, 23, 42, 0.28);
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
-    }
-
-    .doc-modal-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 1rem;
-        padding: 0.9rem 1.15rem;
-        border-bottom: 1px solid #e2e8f0;
-    }
-
-    .doc-modal-title {
-        font-size: 0.88rem;
-        font-weight: 700;
-        color: #0f172a;
-    }
-
-    .doc-modal-sub {
-        font-size: 0.72rem;
-        color: #64748b;
-        margin-top: 0.1rem;
-    }
-
-    .doc-modal-close {
-        width: 30px;
-        height: 30px;
-        border-radius: 9999px;
-        border: none;
-        background: #f1f5f9;
-        color: #334155;
-        font-size: 1.1rem;
-        line-height: 1;
-        cursor: pointer;
-    }
-
-    .doc-modal-close:hover {
-        background: #e2e8f0;
-    }
-
-    .doc-modal-body {
-        padding: 1rem;
-        background: #f8fafc;
-        overflow: auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 360px;
-    }
-
-    .doc-modal-body img {
-        max-width: 100%;
-        max-height: 70vh;
-        border-radius: 8px;
-        box-shadow: 0 4px 16px rgba(15, 23, 42, 0.1);
-    }
-
-    .doc-modal-body iframe {
-        width: 100%;
-        height: 70vh;
-        border: none;
-        border-radius: 8px;
-        background: #ffffff;
-    }
+    <?= view('pemohon/_doc_preview_modal', ['part' => 'styles'], ['saveData' => false]) ?>
 
     @media (max-width: 900px) {
         .stepper {
@@ -500,13 +412,14 @@ $omsetFormatted    = $omsetDigits !== '' ? number_format((int) $omsetDigits, 0, 
                                         </div>
                                     </div>
                                     <?php if ($currentDok): ?>
+                                        <?php $isImg = strpos(strtolower((string) $currentDok['tipe_file']), 'image/') === 0; ?>
                                         <button
                                             type="button"
                                             class="btn-doc-view"
-                                            data-doc-url="<?= base_url('pemohon/sku/dokumen/' . $currentDok['id']) ?>"
-                                            data-doc-title="<?= esc($spec['label']) ?>"
-                                            data-doc-name="<?= esc($currentDok['nama_file']) ?>"
-                                            data-doc-mime="<?= esc($currentDok['tipe_file']) ?>">
+                                            data-doc-preview
+                                            data-url="<?= base_url('pemohon/sku/dokumen/' . $currentDok['id']) ?>"
+                                            data-title="<?= esc($spec['label'] . ' — ' . $currentDok['nama_file']) ?>"
+                                            data-kind="<?= $isImg ? 'image' : 'pdf' ?>">
                                             Lihat
                                         </button>
                                     <?php endif; ?>
@@ -551,74 +464,9 @@ $omsetFormatted    = $omsetDigits !== '' ? number_format((int) $omsetDigits, 0, 
         </form>
     </div>
 </div>
-
-<div class="doc-modal-backdrop" id="docModal" role="dialog" aria-modal="true" aria-labelledby="docModalTitle">
-    <div class="doc-modal">
-        <div class="doc-modal-header">
-            <div>
-                <div class="doc-modal-title" id="docModalTitle">Pratinjau Berkas</div>
-                <div class="doc-modal-sub" id="docModalSub"></div>
-            </div>
-            <button type="button" class="doc-modal-close" id="docModalClose" aria-label="Tutup">&times;</button>
-        </div>
-        <div class="doc-modal-body" id="docModalBody"></div>
-    </div>
-</div>
 <?= $this->endSection() ?>
 
 <?= $this->section('scripts') ?>
 <?= $this->include('pemohon/_sku_form_scripts') ?>
-<script>
-    (function () {
-        var modal = document.getElementById('docModal');
-        var modalTitle = document.getElementById('docModalTitle');
-        var modalSub = document.getElementById('docModalSub');
-        var modalBody = document.getElementById('docModalBody');
-        var closeBtn = document.getElementById('docModalClose');
-
-        function closeModal() {
-            modal.classList.remove('is-open');
-            modalBody.innerHTML = '';
-        }
-
-        document.querySelectorAll('.btn-doc-view').forEach(function (btn) {
-            btn.addEventListener('click', function () {
-                var url = btn.dataset.docUrl;
-                var title = btn.dataset.docTitle || 'Pratinjau Berkas';
-                var name = btn.dataset.docName || '';
-                var mime = (btn.dataset.docMime || '').toLowerCase();
-
-                modalTitle.textContent = title;
-                modalSub.textContent = name;
-                modalBody.innerHTML = '';
-
-                if (mime.indexOf('image/') === 0) {
-                    var img = document.createElement('img');
-                    img.src = url;
-                    img.alt = title;
-                    modalBody.appendChild(img);
-                } else {
-                    var frame = document.createElement('iframe');
-                    frame.src = url;
-                    frame.title = title;
-                    modalBody.appendChild(frame);
-                }
-
-                modal.classList.add('is-open');
-            });
-        });
-
-        closeBtn.addEventListener('click', closeModal);
-        modal.addEventListener('click', function (e) {
-            if (e.target === modal) {
-                closeModal();
-            }
-        });
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape' && modal.classList.contains('is-open')) {
-                closeModal();
-            }
-        });
-    })();
-</script>
+<?= view('pemohon/_doc_preview_modal', ['part' => 'body']) ?>
 <?= $this->endSection() ?>

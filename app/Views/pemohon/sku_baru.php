@@ -1,12 +1,6 @@
 <?= $this->extend('layouts/dashboard') ?>
 
 <?php
-$padukuhanList = [
-    'Dabag', 'Dero', 'Gandok', 'Gejayan', 'Gempol', 'Joho',
-    'Kaliwaru', 'Kayen', 'Kentungan', 'Manukan', 'Ngropoh', 'Ngringin',
-    'Pikgondang', 'Pondok', 'Pringwulung', 'Sanggrahan', 'Soropadan', 'Tiyasan',
-];
-
 $dokumenList = [
     [
         'input'    => 'dokumen_pengantar_rt_rw',

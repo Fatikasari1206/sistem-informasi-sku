@@ -1,21 +1,6 @@
 <?= $this->extend('layouts/dashboard') ?>
 
 <?php
-$formatTanggal = static function (?string $date): string {
-    if (empty($date)) {
-        return '-';
-    }
-    $months = [
-        1 => 'Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun',
-        'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des',
-    ];
-    $ts = strtotime($date);
-    if ($ts === false) {
-        return '-';
-    }
-    return date('d', $ts) . ' ' . $months[(int) date('n', $ts)] . ' ' . date('Y', $ts);
-};
-
 $statusMeta = [
     'draft'                      => ['label' => 'Draft', 'class' => 'status-neutral', 'icon' => ''],
     'diajukan'                   => ['label' => 'Menunggu Verifikasi', 'class' => 'status-amber', 'icon' => ''],
@@ -379,7 +364,7 @@ $statusMeta = [
         </div>
         <div class="kpi-card">
             <div class="kpi-label">MASA BERLAKU TERDEKAT</div>
-            <div class="kpi-value danger"><?= esc($formatTanggal($stats['masa_berlaku_terdekat'] ?? null)) ?></div>
+            <div class="kpi-value danger"><?= esc(format_tanggal_indo($stats['masa_berlaku_terdekat'] ?? null)) ?></div>
         </div>
     </section>
 
@@ -419,7 +404,7 @@ $statusMeta = [
                                 <td class="cell-strong"><?= esc($row['nama_usaha']) ?></td>
                                 <td><span class="pill-badge service-pill"><?= esc($layanan) ?></span></td>
                                 <td><?= esc($padukuhan) ?></td>
-                                <td><?= esc($formatTanggal($row['created_at'] ?? null)) ?></td>
+                                <td><?= esc(format_tanggal_indo($row['created_at'] ?? null)) ?></td>
                                 <td>
                                     <span class="pill-badge <?= esc($meta['class']) ?>">
                                         <?= esc($meta['icon'] . $meta['label']) ?>

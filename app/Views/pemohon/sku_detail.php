@@ -1,22 +1,6 @@
 <?= $this->extend('layouts/dashboard') ?>
 
 <?php
-$formatTanggal = static function (?string $date, bool $withTime = false): string {
-    if (empty($date)) {
-        return '-';
-    }
-    $months = [
-        1 => 'Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun',
-        'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des',
-    ];
-    $ts = strtotime($date);
-    if ($ts === false) {
-        return '-';
-    }
-    $formatted = date('d', $ts) . ' ' . $months[(int) date('n', $ts)] . ' ' . date('Y', $ts);
-    return $withTime ? $formatted . ' ' . date('H:i', $ts) : $formatted;
-};
-
 $statusMeta = [
     'draft'                      => ['label' => 'Draft', 'class' => 'status-neutral', 'step' => 1],
     'diajukan'                   => ['label' => 'Menunggu Verifikasi Staf', 'class' => 'status-amber', 'step' => 1],
@@ -318,90 +302,7 @@ $steps = [
     }
 
     /* Popup Preview Modal */
-    .doc-modal-backdrop {
-        position: fixed;
-        inset: 0;
-        background: rgba(15, 23, 42, 0.62);
-        backdrop-filter: blur(4px);
-        z-index: 1100;
-        display: none;
-        align-items: center;
-        justify-content: center;
-        padding: 1.25rem;
-    }
-
-    .doc-modal-backdrop.is-open {
-        display: flex;
-    }
-
-    .doc-modal-card {
-        width: 100%;
-        max-width: 820px;
-        max-height: 90vh;
-        background: #ffffff;
-        border-radius: 14px;
-        box-shadow: 0 24px 55px rgba(15, 23, 42, 0.28);
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
-    }
-
-    .doc-modal-head {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 1rem;
-        padding: 0.85rem 1.2rem;
-        border-bottom: 1px solid #e2e8f0;
-    }
-
-    .doc-modal-head strong {
-        font-size: 0.88rem;
-        color: #0f172a;
-    }
-
-    .doc-modal-close {
-        width: 30px;
-        height: 30px;
-        border: none;
-        border-radius: 8px;
-        background: #f1f5f9;
-        color: #334155;
-        font-size: 1.1rem;
-        line-height: 1;
-        cursor: pointer;
-    }
-
-    .doc-modal-close:hover {
-        background: #e2e8f0;
-    }
-
-    .doc-modal-body {
-        background: #f8fafc;
-        padding: 1rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 420px;
-        max-height: calc(90vh - 60px);
-        overflow: auto;
-    }
-
-    .doc-modal-body img {
-        max-width: 100%;
-        max-height: 75vh;
-        border-radius: 8px;
-        object-fit: contain;
-        box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
-    }
-
-    .doc-modal-body iframe {
-        width: 100%;
-        height: 72vh;
-        border: none;
-        border-radius: 8px;
-        background: #ffffff;
-    }
+    <?= view('pemohon/_doc_preview_modal', ['part' => 'styles'], ['saveData' => false]) ?>
 
     @media (max-width: 900px) {
         .stepper {
@@ -426,7 +327,7 @@ $steps = [
                 <h1><?= esc($permohonan['kode_pengajuan']) ?></h1>
                 <p>
                     Layanan <?= ($permohonan['tipe_pengajuan'] ?? 'baru') === 'perpanjangan' ? 'Perpanjangan SKU' : 'SKU Baru' ?>
-                    &bull; Diajukan <?= esc($formatTanggal($permohonan['created_at'] ?? null, true)) ?>
+                    &bull; Diajukan <?= esc(format_tanggal_indo($permohonan['created_at'] ?? null, false, true)) ?>
                 </p>
             </div>
             <div style="display: flex; align-items: center; gap: 0.55rem; flex-wrap: wrap;">
@@ -500,7 +401,7 @@ $steps = [
 
                     <?php if (!empty($permohonan['berlaku_sampai'])): ?>
                         <span class="kv-k">Masa Berlaku</span>
-                        <span class="kv-v"><?= esc($formatTanggal($permohonan['tanggal_surat']) . ' s.d. ' . $formatTanggal($permohonan['berlaku_sampai'])) ?></span>
+                        <span class="kv-v"><?= esc(format_tanggal_indo($permohonan['tanggal_surat']) . ' s.d. ' . format_tanggal_indo($permohonan['berlaku_sampai'])) ?></span>
                     <?php endif; ?>
                 </div>
 
@@ -547,7 +448,7 @@ $steps = [
                                 <div>
                                     <div class="timeline-title"><?= esc($logMeta['label']) ?></div>
                                     <div class="timeline-meta">
-                                        <?= esc($formatTanggal($log['created_at'] ?? null, true)) ?>
+                                        <?= esc(format_tanggal_indo($log['created_at'] ?? null, false, true)) ?>
                                         <?= !empty($log['nama_user']) ? ' &bull; ' . esc($log['nama_user']) : '' ?>
                                     </div>
                                     <?php if (!empty($log['keterangan'])): ?>
@@ -562,59 +463,8 @@ $steps = [
         </div>
     </section>
 
-    <!-- Popup Viewer Berkas -->
-    <div class="doc-modal-backdrop" id="doc-preview-modal" role="dialog" aria-modal="true" aria-labelledby="doc-modal-title">
-        <div class="doc-modal-card">
-            <div class="doc-modal-head">
-                <strong id="doc-modal-title">Pratinjau Berkas</strong>
-                <button type="button" class="doc-modal-close" id="doc-modal-close" aria-label="Tutup">&times;</button>
-            </div>
-            <div class="doc-modal-body" id="doc-modal-body"></div>
-        </div>
-    </div>
 <?= $this->endSection() ?>
 
 <?= $this->section('scripts') ?>
-<script>
-    (function () {
-        var modal = document.getElementById('doc-preview-modal');
-        var titleEl = document.getElementById('doc-modal-title');
-        var bodyEl = document.getElementById('doc-modal-body');
-        var closeBtn = document.getElementById('doc-modal-close');
-
-        function closeModal() {
-            modal.classList.remove('is-open');
-            bodyEl.innerHTML = '';
-        }
-
-        document.querySelectorAll('[data-doc-preview]').forEach(function (btn) {
-            btn.addEventListener('click', function () {
-                titleEl.textContent = this.dataset.title || 'Pratinjau Berkas';
-                bodyEl.innerHTML = '';
-
-                if (this.dataset.kind === 'image') {
-                    var img = document.createElement('img');
-                    img.src = this.dataset.url;
-                    img.alt = titleEl.textContent;
-                    bodyEl.appendChild(img);
-                } else {
-                    var frame = document.createElement('iframe');
-                    frame.src = this.dataset.url;
-                    frame.title = titleEl.textContent;
-                    bodyEl.appendChild(frame);
-                }
-
-                modal.classList.add('is-open');
-            });
-        });
-
-        closeBtn.addEventListener('click', closeModal);
-        modal.addEventListener('click', function (e) {
-            if (e.target === modal) closeModal();
-        });
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
-        });
-    })();
-</script>
+<?= view('pemohon/_doc_preview_modal', ['part' => 'body']) ?>
 <?= $this->endSection() ?>

@@ -32,22 +32,20 @@ class Dashboard extends BaseController
             'top_padukuhan' => $topPadukuhan,
         ];
 
-        $daftarSku = $skuModel->select(
-            "permohonan_sku.*, COALESCE(NULLIF(permohonan_sku.padukuhan_usaha, ''), master_penduduk.padukuhan, '-') AS padukuhan",
+        $chartRecords = $skuModel->select(
+            "DATE(permohonan_sku.created_at) AS tanggal, COALESCE(NULLIF(permohonan_sku.padukuhan_usaha, ''), master_penduduk.padukuhan, '-') AS padukuhan",
             false
         )
             ->join('master_penduduk', 'master_penduduk.nik = permohonan_sku.nik_pemohon', 'left')
-            ->orderBy("CASE permohonan_sku.status WHEN 'menunggu_persetujuan_lurah' THEN 0 WHEN 'disetujui' THEN 1 WHEN 'selesai' THEN 2 ELSE 3 END", 'ASC', false)
-            ->orderBy('permohonan_sku.created_at', 'DESC')
+            ->orderBy('permohonan_sku.created_at', 'ASC')
             ->findAll();
 
         return view('lurah/dashboard', [
-            'title'               => 'Dashboard Lurah - Sistem SKU',
-            'logoutLabel'         => 'Keluar Sistem',
-            'stats'               => $stats,
-            'padukuhanDistribusi' => $padukuhanDistribusi,
-            'daftarSku'           => $daftarSku,
-            'padukuhanList'       => self::PADUKUHAN_LIST,
+            'title'         => 'Dashboard Lurah - Sistem SKU',
+            'logoutLabel'   => 'Keluar Sistem',
+            'stats'         => $stats,
+            'chartRecords'  => $chartRecords,
+            'padukuhanList' => self::PADUKUHAN_LIST,
         ]);
     }
 
@@ -75,10 +73,7 @@ class Dashboard extends BaseController
             return redirect()->to('/lurah/tte/' . (int) $first['id']);
         }
 
-        return view('lurah/pengesahan', [
-            'title'       => 'Pengesahan TTE Digital - Sistem SKU',
-            'logoutLabel' => 'Keluar Sistem',
-        ]);
+        return redirect()->to('/lurah/antrian');
     }
 
     public function arsip()

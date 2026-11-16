@@ -74,8 +74,9 @@ class Sku extends BaseController
     public function baru()
     {
         return view('pemohon/sku_baru', [
-            'title' => 'Permohonan SKU Baru - Sistem SKU',
-            'user'  => session()->get(),
+            'title'         => 'Permohonan SKU Baru - Sistem SKU',
+            'padukuhanList' => self::PADUKUHAN_LIST,
+            'user'          => session()->get(),
         ]);
     }
 

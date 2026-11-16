@@ -1,18 +1,6 @@
 <?= $this->extend('layouts/dashboard') ?>
 
 <?php
-$formatTanggal = static function (?string $date): string {
-    if (empty($date)) {
-        return '-';
-    }
-    $months = [
-        1 => 'Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun',
-        'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des',
-    ];
-    $ts = strtotime($date);
-    return $ts === false ? '-' : date('d', $ts) . ' ' . $months[(int) date('n', $ts)] . ' ' . date('Y', $ts);
-};
-
 $dokumenPerpanjangan = [
     [
         'input'    => 'dokumen_perpanjangan_sku_lama',
@@ -98,9 +86,9 @@ $todayDate  = date('Y-m-d');
                                 <?php foreach ($skuLamaList as $index => $item): ?>
                                     <?php
                                         $nomorRef    = !empty($item['nomor_surat']) ? $item['nomor_surat'] : $item['kode_pengajuan'];
-                                        $tglMulai    = $formatTanggal($item['tanggal_surat'] ?? $item['disetujui_pada'] ?? $item['created_at']);
+                                        $tglMulai    = format_tanggal_indo($item['tanggal_surat'] ?? $item['disetujui_pada'] ?? $item['created_at']);
                                         $tglAkhirRaw = $item['berlaku_sampai'] ?? null;
-                                        $tglAkhir    = $formatTanggal($tglAkhirRaw);
+                                        $tglAkhir    = format_tanggal_indo($tglAkhirRaw);
                                         $isExpired   = !empty($tglAkhirRaw) && $tglAkhirRaw < $todayDate;
                                         $masaText    = !empty($tglAkhirRaw)
                                             ? "{$tglMulai} s.d. {$tglAkhir} (" . ($isExpired ? 'Kedaluwarsa' : 'Masih Aktif') . ')'
