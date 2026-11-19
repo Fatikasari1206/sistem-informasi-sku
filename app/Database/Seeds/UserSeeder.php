@@ -58,6 +58,7 @@ class UserSeeder extends Seeder
             ],
             [
                 'nik'           => '3404011508950004',
+                'nip'           => null,
                 'nama_lengkap'  => 'Ahmad Kurniawan',
                 'email'         => 'pemohon@gmail.com',
                 'password_hash' => password_hash('pemohon123', PASSWORD_BCRYPT),
@@ -73,6 +74,6 @@ class UserSeeder extends Seeder
         ];
 
         // Insert batch ignore if exists
-        $this->db->table('users')->insertBatch($users);
+        $this->db->table('users')->ignore(true)->insertBatch($users);
     }
 }
